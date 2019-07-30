@@ -5,6 +5,8 @@ public class DialogController : MonoBehaviour
 {
     public GameObject DialogCanvas;
     public Text DialogText;
+    public Image Image;
+    private bool isQuest;
 
     #region Singleton
     public static DialogController instance
@@ -22,18 +24,20 @@ public class DialogController : MonoBehaviour
     private void Awake()
     {
         DialogCanvas.SetActive(false);
-        ShowDialog("menu.start");
     }
 
 
-    public void ShowDialog(string idText)
+    public void ShowDialog(string idText, Image image, bool isQuest = false)
     {
         DialogText.text = LanguageController.instance.GetTextById(idText);
+        Image = image;
+        this.isQuest = isQuest;
         DialogCanvas.SetActive(true);
     }
 
     public void Accept()
     {
+        //Save the quest if neccesary
         DialogCanvas.SetActive(false);
     }
 
