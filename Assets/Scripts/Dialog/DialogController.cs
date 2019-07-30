@@ -5,7 +5,6 @@ public class DialogController : MonoBehaviour
 {
     public GameObject DialogCanvas;
     public Text DialogText;
-    private LanguageController languageController;
 
     #region Singleton
     public static DialogController instance
@@ -14,7 +13,7 @@ public class DialogController : MonoBehaviour
         {
             var gc = GameObject.FindObjectOfType<DialogController>();
             if (gc == null)
-                throw new System.Exception("GameController not added to Scene");
+                throw new System.Exception("DialogController not added to Scene");
             return gc;
         }
     }
@@ -22,7 +21,6 @@ public class DialogController : MonoBehaviour
 
     private void Awake()
     {
-        languageController = GameObject.FindObjectOfType<LanguageController>();
         DialogCanvas.SetActive(false);
         ShowDialog("menu.start");
     }
@@ -30,7 +28,7 @@ public class DialogController : MonoBehaviour
 
     public void ShowDialog(string idText)
     {
-        DialogText.text = languageController.GetTextById(idText);
+        DialogText.text = LanguageController.instance.GetTextById(idText);
         DialogCanvas.SetActive(true);
     }
 

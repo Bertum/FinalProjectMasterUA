@@ -8,6 +8,20 @@ public class LanguageController : MonoBehaviour
     private Dictionary<string, string> texts;
     private string languageSelected;
 
+    #region Singleton
+    public static LanguageController instance
+    {
+        get
+        {
+            var gc = GameObject.FindObjectOfType<LanguageController>();
+            if (gc == null)
+                throw new System.Exception("LanguageController not added to Scene");
+            return gc;
+        }
+    }
+    #endregion
+
+
     private void Awake()
     {
         GetCurrentLanguage();
