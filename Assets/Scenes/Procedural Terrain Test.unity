@@ -1587,6 +1587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 714349886}
   - component: {fileID: 714349887}
+  - component: {fileID: 714349888}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -1620,8 +1621,20 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 6
   m_Mesh: {fileID: 4300000, guid: 815a2bb8b0d12a240bec80e5ec6c2328, type: 3}
+--- !u!114 &714349888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714349885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2497489d30e37ed409f03dac8f469689, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &744255857
 PrefabInstance:
   m_ObjectHideFlags: 0
