@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MouseManager : MonoBehaviour {
     // Start is called before the first frame update
-    public GameObject hoveredItem;
+    private GameObject hoveredItem;
     public GameObject selectedItem;
 
     void Start() {
@@ -39,15 +39,13 @@ public class MouseManager : MonoBehaviour {
             ClearHovered();
         }
         hoveredItem = obj;
-    }
+    }    
 
-    private void OnMouseDown() {
-        if(hoveredItem != null) {
-            selectedItem = hoveredItem;
-        }
-    }
-
-    private void ClearHovered() {
+    public void ClearHovered() {
         hoveredItem = null;
+    }
+
+    public GameObject getHoveredObject() {
+        return hoveredItem;
     }
 }
