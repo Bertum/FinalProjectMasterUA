@@ -8,10 +8,6 @@ public class MouseManager : MonoBehaviour {
     private GameObject hoveredItem;
     public GameObject selectedItem;
 
-    void Start() {
-
-    }
-
     // Update is called once per frame
     void Update() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -47,5 +43,5 @@ public class MouseManager : MonoBehaviour {
 
     public GameObject getHoveredObject() {
         return hoveredItem;
-    }
+    }    
 }
