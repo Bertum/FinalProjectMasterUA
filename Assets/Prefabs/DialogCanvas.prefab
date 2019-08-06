@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 608321748136770883}
   - component: {fileID: 608321748136770882}
   - component: {fileID: 608321748136770885}
-  - component: {fileID: 1198338181704233654}
   m_Layer: 5
   m_Name: DialogCanvas
   m_TagString: Untagged
@@ -100,22 +99,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1198338181704233654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608321748136770884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a3e9d223437174f82b48debac39ded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DialogCanvas: {fileID: 608321748136770884}
-  DialogText: {fileID: 608321749501592209}
-  CharacterName: {fileID: 6841791023134971488}
-  Image: {fileID: 8869398101868056048}
 --- !u!1 &608321749234056330
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +498,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1198338181704233654}
+      - m_Target: {fileID: 0}
         m_MethodName: Decline
         m_Mode: 1
         m_Arguments:
@@ -750,7 +733,7 @@ GameObject:
   - component: {fileID: 6670280900333782521}
   - component: {fileID: 6841791023134971488}
   m_Layer: 5
-  m_Name: CharacterName
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1284,7 +1267,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1198338181704233654}
+      - m_Target: {fileID: 0}
         m_MethodName: Accept
         m_Mode: 1
         m_Arguments:
