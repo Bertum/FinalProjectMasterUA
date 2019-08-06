@@ -14,29 +14,34 @@ public class DialogBuilder
         return data;
     }
 
-    public void WithTextId(string textId)
+    public DialogBuilder WithTextId(string textId)
     {
         data.TextId = textId;
+        return this;
     }
 
-    public void WithImage(Image image)
+    public DialogBuilder WithImage(Image image)
     {
         data.Image = image;
+        return this;
     }
 
-    public void WithCharacterName(string name)
+    public DialogBuilder WithCharacterName(string name)
     {
         data.CharacterName = name;
+        return this;
     }
 
-    public void IsQuest()
+    public DialogBuilder IsQuest()
     {
         data.IsQuest = true;
+        return this;
     }
 
-    public void WithCharacter(string name, Image image)
+    public DialogBuilder WithCharacter(string name, Image image)
     {
         data.CharacterName = name;
         data.Image = image;
+        return this;
     }
 }
