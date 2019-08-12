@@ -55,7 +55,7 @@ public class LanguageController : MonoBehaviour
     public void UpdateTexts()
     {
         GetCurrentLanguage();
-        var allActiveTexts = GameObject.FindObjectsOfType<Text>();
+        var allActiveTexts = Resources.FindObjectsOfTypeAll<Text>();
         foreach (var text in allActiveTexts)
         {
             var translatableComponente = text.gameObject.GetComponent<TranslatableComponent>();
