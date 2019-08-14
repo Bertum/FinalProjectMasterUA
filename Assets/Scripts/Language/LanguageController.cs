@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LanguageController : MonoBehaviour
 {
@@ -49,5 +50,19 @@ public class LanguageController : MonoBehaviour
             value = string.Format("Text with id {0} not found", id);
         }
         return value;
+    }
+
+    public void UpdateTexts()
+    {
+        GetCurrentLanguage();
+        var allActiveTexts = Resources.FindObjectsOfTypeAll<Text>();
+        foreach (var text in allActiveTexts)
+        {
+            var translatableComponente = text.gameObject.GetComponent<TranslatableComponent>();
+            if (translatableComponente != null)
+            {
+                text.text = GetTextById(translatableComponente.TextId);
+            }
+        }
     }
 }
