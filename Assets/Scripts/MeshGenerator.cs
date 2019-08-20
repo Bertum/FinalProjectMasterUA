@@ -13,12 +13,16 @@ public class MeshGenerator : MonoBehaviour {
     public int xSize = 20;
     public int zSize = 20;
 
+    private float offSetX = 25f;
+    private float offSetZ = 25f;
+
     // Start is called before the first frame update
     void Start() {
 
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-
+        offSetX = UnityEngine.Random.Range(0, 100f);
+        offSetZ = UnityEngine.Random.Range(0, 100f);
         createShape();
         updateMesh();
     }
@@ -37,7 +41,7 @@ public class MeshGenerator : MonoBehaviour {
         //Create Vertices
         for (int i = 0, z = 0; z <= zSize; z++) {
             for(int x = 0; x<= xSize; x++) {
-                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
+                float y = Mathf.PerlinNoise(x * .2f + offSetX, z * .2f + offSetZ) * 1.2f;
                 vertices[i] = new Vector3(x, y, z);
                 i++;
             }
@@ -71,6 +75,8 @@ public class MeshGenerator : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        offSetX += Time.deltaTime;
+        createShape();
+        updateMesh();
     }
 }
