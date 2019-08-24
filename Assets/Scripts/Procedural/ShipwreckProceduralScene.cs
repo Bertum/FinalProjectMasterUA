@@ -12,13 +12,13 @@ public class ShipwreckProceduralScene : BaseProceduralScene
     {
         base.start();
         seaWrapper = GameObject.FindGameObjectWithTag("SeaWrapper");
-        boatPrefab = Resources.Load("Prefabs/Boat") as GameObject;
+        boatPrefab = Resources.Load("Prefabs/Procedural/Boat") as GameObject;
         loadBoat();
 
         debrisPrefabs = new ArrayList();
-        debrisPrefabs.Add(Resources.Load("Prefabs/Debris1") as GameObject);
-        debrisPrefabs.Add(Resources.Load("Prefabs/Debris2") as GameObject);
-        debrisPrefabs.Add(Resources.Load("Prefabs/Debris3") as GameObject);
+        debrisPrefabs.Add(Resources.Load("Prefabs/Procedural/Debris1") as GameObject);
+        debrisPrefabs.Add(Resources.Load("Prefabs/Procedural/Debris2") as GameObject);
+        debrisPrefabs.Add(Resources.Load("Prefabs/Procedural/Debris3") as GameObject);
         loadDebris();
     }
 
@@ -35,7 +35,7 @@ public class ShipwreckProceduralScene : BaseProceduralScene
 
     // Loads ramdom positioned wreck
     void loadDebris() {
-        int numberOfDebris = Random.Range(4, 8);
+        int numberOfDebris = Random.Range(10, 15);
 
         for (int x = 1; x <= numberOfDebris; x++)
         {

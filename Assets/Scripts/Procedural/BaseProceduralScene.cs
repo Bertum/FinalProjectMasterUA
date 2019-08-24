@@ -10,6 +10,7 @@ public class BaseProceduralScene : MonoBehaviour
     private GameObject bottomWrapper;
     private GameObject seaPrefab;
     private GameObject sandPrefab;
+    private GameObject decorationPrefab;
 
     private List<GameObject> bottomLayer;
     private List<GameObject> surfaceLayer;
@@ -20,14 +21,13 @@ public class BaseProceduralScene : MonoBehaviour
     }
 
     public void start() {
-        setupCamera();
-
         seaWrapper = GameObject.FindGameObjectWithTag("SeaWrapper");
-        seaPrefab = Resources.Load("Prefabs/OceanTile") as GameObject;
+        seaPrefab = Resources.Load("Prefabs/Procedural/OceanTile") as GameObject;
         loadWater();
 
         bottomWrapper = GameObject.FindGameObjectWithTag("BottomWrapper");
-        sandPrefab = Resources.Load("Prefabs/SandTile") as GameObject;
+        sandPrefab = Resources.Load("Prefabs/Procedural/SandTile") as GameObject;
+        decorationPrefab = Resources.Load("Prefabs/Procedural/BottomDecoration1") as GameObject;
         loadBottom();
     }
 
@@ -51,15 +51,11 @@ public class BaseProceduralScene : MonoBehaviour
             for (int z = 0; z < 68; z++) {
                 GameObject tile = GameObject.Instantiate(sandPrefab, new Vector3(x * sandWidth, BOTTOM_Y, z * sandWidth), Quaternion.identity);
                 tile.transform.parent = bottomWrapper.transform;
+                if (Random.Range(1,25) == 1) {
+                    GameObject decoration = GameObject.Instantiate(decorationPrefab, new Vector3(x * sandWidth, BOTTOM_Y, z * sandWidth), Quaternion.identity);
+                    decoration.transform.parent = bottomWrapper.transform;
+                }
             }
         }
     }
-
-    // Setup the camera initial params
-    void setupCamera() {
-
-
-    }
-
-
 }
