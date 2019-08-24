@@ -4,4 +4,5 @@
     public const string LANGUAGEINDEXSELECTED = "LanguageIndexSelected";
     public const string MUSICVOLUME = "MusicVolume";
     public const string EFFECTSVOLUME = "EffectsVolume";
+    public enum EJobType { Rookie, Official, Cook, Searcher, Pilot};
 }
