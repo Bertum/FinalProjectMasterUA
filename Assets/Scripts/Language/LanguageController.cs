@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿//using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -34,7 +34,7 @@ public class LanguageController : MonoBehaviour
         var files = Resources.LoadAll<TextAsset>("Languages");
         //If the selected or default language doesn't exists takes english as a default language
         TextAsset selectedFile = files.Any(a => a.name == languageSelected) ? files.FirstOrDefault(f => f.name == languageSelected) : files.FirstOrDefault(f => f.name == SystemLanguage.English.ToString());
-        texts = JsonConvert.DeserializeObject<Dictionary<string, string>>(selectedFile.ToString());
+        //texts = JsonConvert.DeserializeObject<Dictionary<string, string>>(selectedFile.ToString());
     }
 
     /// <summary>
