@@ -1,3 +1,6 @@
 ﻿{
-  "menu.start": "Start"
+  "menu.start": "Start",
+  "menu.acceptButton": "Accept",
+  "menu.declineButton": "Decline",
+  "quest.test": "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest"
 }

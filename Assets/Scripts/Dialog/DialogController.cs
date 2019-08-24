@@ -4,16 +4,20 @@ using UnityEngine.UI;
 public class DialogController : MonoBehaviour
 {
     public GameObject DialogCanvas;
-    public Text DialogText;
+    public Text DialogText, Title;
     public Image Image;
     private bool isQuest;
+    [HideInInspector]
+    public delegate void FunctionCallback();
+    [HideInInspector]
+    public FunctionCallback successFunction, declineFunction;
 
     #region Singleton
     public static DialogController instance
     {
         get
         {
-            var gc = GameObject.FindObjectOfType<DialogController>();
+            var gc = FindObjectOfType<DialogController>();
             if (gc == null)
                 throw new System.Exception("DialogController not added to Scene");
             return gc;
@@ -27,22 +31,30 @@ public class DialogController : MonoBehaviour
     }
 
 
-    public void ShowDialog(string idText, Image image, bool isQuest = false)
+    public void ShowDialog(DialogData data, FunctionCallback success, FunctionCallback decline)
     {
-        DialogText.text = LanguageController.instance.GetTextById(idText);
-        Image = image;
-        this.isQuest = isQuest;
+        successFunction = success;
+        declineFunction = decline;
+        DialogText.text = LanguageController.instance.GetTextById(data.TextId);
+        Image = data.Image;
+        isQuest = data.IsQuest;
+        Title.text = data.CharacterName;
         DialogCanvas.SetActive(true);
     }
 
     public void Accept()
     {
         //Save the quest if neccesary
+        successFunction();
+        successFunction?.Invoke();
+        successFunction = null;
         DialogCanvas.SetActive(false);
     }
 
     public void Decline()
     {
+        declineFunction?.Invoke();
+        declineFunction = null;
         DialogCanvas.SetActive(false);
     }
 }
