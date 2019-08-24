@@ -6,7 +6,7 @@ using static Constants;
 public class NpcBase : MonoBehaviour {
 
     //Attributes definition.
-    public string name = "";
+    public string npcName = "";
     public int level = 0;
     public JobClass jobClass;
     public int strength = 0;
@@ -18,13 +18,13 @@ public class NpcBase : MonoBehaviour {
 
     //Constructor for player npcs
     public NpcBase(string npcName, int npclevel, EJobType npcJob, int npcJobLevel, int npcStrength, int npcDexterity, int npcIntelligence, int npcSight) {
-        name = npcName;
-        level = npclevel;
-        jobClass = new JobClass(npcJob, npcJobLevel);
-        strength = npcStrength;
-        dexterity = npcDexterity;
-        intelligence = npcIntelligence;
-        sight = npcSight;
+        this.npcName = npcName;
+        this.level = npclevel;
+        this.jobClass = new JobClass(npcJob, npcJobLevel);
+        this.strength = npcStrength;
+        this.dexterity = npcDexterity;
+        this.intelligence = npcIntelligence;
+        this.sight = npcSight;
         setMaxHP();
     }
 
