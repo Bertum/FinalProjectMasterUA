@@ -18,7 +18,7 @@ public class ShipController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Balance();
+        //Balance();
         Movement();
         Steer();
         DayTime();
