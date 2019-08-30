@@ -7,6 +7,7 @@ public class ShipController : MonoBehaviour {
 
     public Vector3 centerOfMass;
     public float shipSpeed = 5;
+    public float steerSpeed = 5;
     public float movementThreshold = 10.0f;
     float offset;
 
@@ -35,14 +36,15 @@ public class ShipController : MonoBehaviour {
 
     private void Movement() {
         verticalInput = Input.GetAxis("Vertical");
-        movementFactor = Mathf.Lerp(movementFactor, verticalInput, Time.deltaTime / movementThreshold);
+        
+        movementFactor = Mathf.Lerp(movementFactor, verticalInput, Time.deltaTime / movementThreshold);        
         transform.Translate(0.0f, 0.0f, movementFactor * shipSpeed);
     }
 
     private void Steer() {
         horizontalInput = Input.GetAxis("Horizontal");
-        steerFactor = Mathf.Lerp(steerFactor, horizontalInput , Time.deltaTime / movementThreshold);
-        transform.Rotate(0.0f, steerFactor * shipSpeed, 0.0f);
+        steerFactor = Mathf.Lerp(steerFactor, horizontalInput * verticalInput, Time.deltaTime / movementThreshold);
+        transform.Rotate(0.0f, steerFactor * steerSpeed, 0.0f);
     }
 
     private void DayTime() {

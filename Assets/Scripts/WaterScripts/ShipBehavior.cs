@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(WaveFloat))]
 public class ShipBehavior : MonoBehaviour
 {
     //visible Properties
@@ -20,6 +19,9 @@ public class ShipBehavior : MonoBehaviour
 
     //internal Properties
     protected Vector3 CamVel;
+
+    //DayTime
+    float offset;
 
 
     public void Awake() {
@@ -59,10 +61,11 @@ public class ShipBehavior : MonoBehaviour
         //Motor Animation // Particle system
         Motor.SetPositionAndRotation(Motor.position, transform.rotation * StartRotation * Quaternion.Euler(0, 10f * steer, 0));
         if (ParticleSystem != null) {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) {
                 ParticleSystem.Play();
-            else
+            } else {
                 ParticleSystem.Pause();
+            }                
         }
 
         //moving forward
@@ -70,9 +73,17 @@ public class ShipBehavior : MonoBehaviour
 
         //move in direction
         Rigidbody.velocity = Quaternion.AngleAxis(Vector3.SignedAngle(Rigidbody.velocity, (movingForward ? 1f : 0f) * transform.forward, Vector3.up) * Drag, Vector3.up) * Rigidbody.velocity;
-
-        //camera position
-        //Camera.transform.LookAt(transform.position + transform.forward * 6f + transform.up * 2f);
-        //Camera.transform.position = Vector3.SmoothDamp(Camera.transform.position, transform.position + transform.forward * -8f + transform.up * 2f, ref CamVel, 0.05f);
     }
+
+    private void Update() {
+        DayTime();
+    }
+
+    private void DayTime() {
+        GameObject dome = GameObject.FindGameObjectWithTag("Sky");
+        Renderer domeRenderer = dome.GetComponent<Renderer>();
+        offset += Time.deltaTime / (24);
+        domeRenderer.material.mainTextureOffset = new Vector2(offset,0);
+    }
+
 }
