@@ -3,29 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FloatObject : MonoBehaviour {
-    public float waterLevel = 0.0f;
-    public float floatThreshold = 2.0f;
-    public float waterDensity = 0.125f;
-    public float downForce = 0.0f;
+    public float waterLevel = 3.0f;
+    public float floatThreshold = 0.1f;
+    public float downForce = 0.125f;
 
     float forceFactor;
     Vector3 floatForce;
 
-    Rigidbody rigidBody;
-
-    private void Start() {
-        rigidBody = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update() {
+   /* // Update is called once per frame
+    void FixedUpdate() {
         forceFactor = 1.0f - ((transform.position.y - waterLevel) / floatThreshold);
-
+        //print(forceFactor);
         if (forceFactor > 0.0f) {
-            floatForce = -Physics.gravity * rigidBody.mass * (forceFactor - rigidBody.velocity.y * waterDensity);
-            floatForce += new Vector3(0.0f, -downForce * rigidBody.mass, 0.0f);
-            rigidBody.AddForceAtPosition(floatForce, transform.position);
+            floatForce = -Physics.gravity * GetComponent<Rigidbody>().mass * (forceFactor - GetComponent<Rigidbody>().velocity.y * waterDensity);            
+            floatForce += new Vector3(0.0f, -downForce * GetComponent<Rigidbody>().mass, 0.0f);
+            GetComponent<Rigidbody>().AddForceAtPosition(floatForce, transform.position);
         }
+    }*/
 
+    private void FixedUpdate() {
+        //Go Down
+        if(transform.position.y > waterLevel + floatThreshold || transform.position.y > waterLevel - floatThreshold) {
+            floatForce = new Vector3(0.0f, -downForce, 0.0f);
+        }
+        //Go Up
+        else if (transform.position.y < waterLevel - floatThreshold || transform.position.y < waterLevel + floatThreshold) {
+            floatForce = new Vector3(0.0f, downForce, 0.0f);
+            
+        }
+        GetComponent<Rigidbody>().AddForce(floatForce);
     }
+
 }
