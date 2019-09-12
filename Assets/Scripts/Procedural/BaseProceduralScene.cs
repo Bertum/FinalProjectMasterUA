@@ -12,9 +12,6 @@ public class BaseProceduralScene : MonoBehaviour
     private GameObject sandPrefab;
     private GameObject decorationPrefab;
 
-    private List<GameObject> bottomLayer;
-    private List<GameObject> surfaceLayer;
-
     // Start is called before the first frame update
     void Start() {
         start();
