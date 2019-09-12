@@ -106,8 +106,8 @@ public class ProceduralOpenWorld : MonoBehaviour
     // Loads the player boat
     void loadPlayerShipPrefab()
     {
-        GameObject boat = GameObject.Instantiate(playerShipPrefab, new Vector3(100, SURFACE_Y, 100), Quaternion.identity);
-        boat.transform.parent = seaWrapper.transform;
+        GameObject playerShip = GameObject.Instantiate(playerShipPrefab, new Vector3(100, SURFACE_Y, 100), Quaternion.identity);
+        playerShip.transform.parent = seaWrapper.transform;
     }
 
 }

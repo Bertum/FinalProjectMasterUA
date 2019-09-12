@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 6627931498873660147}
   - component: {fileID: 6627931498873660145}
   - component: {fileID: 6627931498873660144}
-  - component: {fileID: 801143203471979013}
+  - component: {fileID: 7943578997728816429}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -79,6 +79,7 @@ Transform:
   - {fileID: 6627931498278031966}
   - {fileID: 6627931497661639741}
   - {fileID: 5630961505700962815}
+  - {fileID: 938001514287736523}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -93,7 +94,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -110,10 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21aff2522d83c01448b0c5fce128b256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterLevel: 0
-  floatThreshold: 0.5
+  waterLevel: 3
+  floatThreshold: 0.1
   downForce: 0
---- !u!114 &801143203471979013
+--- !u!114 &7943578997728816429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,14 +123,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6627931498873660146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6ceedd23c1a434587978451e952ed2, type: 3}
+  m_Script: {fileID: 11500000, guid: 033a468ce76f0ac48bb3d69a96067e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Motor: {fileID: 0}
-  SteerPower: 500
-  Power: 5
-  MaxSpeed: 10
-  Drag: 0.1
+  centerOfMass: {x: 0, y: 0, z: 0}
+  shipSpeed: 5
+  steerSpeed: 5
+  movementThreshold: 10
 --- !u!1 &8870195595405924797
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,13 +155,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8870195595405924797}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 45, z: -60}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 50, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6627931498873660147}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!20 &8215432234778612123
 Camera:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 20.32088
+  field of view: 30
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -213,6 +213,419 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8870195595405924797}
   m_Enabled: 1
+--- !u!1 &9031247974134565973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938001514287736523}
+  m_Layer: 0
+  m_Name: cannons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &938001514287736523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031247974134565973}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8660958800233774524}
+  - {fileID: 2551694211763037822}
+  - {fileID: 1932745971162734648}
+  - {fileID: 4640195571504410471}
+  - {fileID: 2708454683535732834}
+  - {fileID: 1359917712857820829}
+  - {fileID: 8163271740125482114}
+  - {fileID: 8841788659170364017}
+  m_Father: {fileID: 6627931498873660147}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1359917712857469627
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938001514287736523}
+    m_Modifications:
+    - target: {fileID: 172174, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_Name
+      value: SM_Veh_Extra_Gun_01_Pirate (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3221745
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0008788705
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8366d4254621ee142804ee460119165f, type: 3}
+--- !u!4 &1359917712857820829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1359917712857469627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1932745971163175966
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938001514287736523}
+    m_Modifications:
+    - target: {fileID: 172174, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_Name
+      value: SM_Veh_Extra_Gun_01_Pirate (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3640912
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.0048879
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8366d4254621ee142804ee460119165f, type: 3}
+--- !u!4 &1932745971162734648 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1932745971163175966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2551694211762690648
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938001514287736523}
+    m_Modifications:
+    - target: {fileID: 172174, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_Name
+      value: SM_Veh_Extra_Gun_01_Pirate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3221745
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.005766809
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8366d4254621ee142804ee460119165f, type: 3}
+--- !u!4 &2551694211763037822 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2551694211762690648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2708454683535772740
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938001514287736523}
+    m_Modifications:
+    - target: {fileID: 172174, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_Name
+      value: SM_Veh_Extra_Gun_01_Pirate (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2802572
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9982423
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8366d4254621ee142804ee460119165f, type: 3}
+--- !u!4 &2708454683535732834 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2708454683535772740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4640195571504321345
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938001514287736523}
+    m_Modifications:
+    - target: {fileID: 172174, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_Name
+      value: SM_Veh_Extra_Gun_01_Pirate (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.406008
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.0040078
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8366d4254621ee142804ee460119165f, type: 3}
+--- !u!4 &4640195571504410471 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4640195571504321345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6627931498277941218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -338,4 +751,229 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 421344, guid: fa9176762befa1f4a8ee4b0aeacac390,
     type: 3}
   m_PrefabInstance: {fileID: 6627931498678249380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8163271740125704356
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938001514287736523}
+    m_Modifications:
+    - target: {fileID: 172174, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_Name
+      value: SM_Veh_Extra_Gun_01_Pirate (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3640912
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8366d4254621ee142804ee460119165f, type: 3}
+--- !u!4 &8163271740125482114 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8163271740125704356}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8660958800233972122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938001514287736523}
+    m_Modifications:
+    - target: {fileID: 172174, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_Name
+      value: SM_Veh_Extra_Gun_01_Pirate
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2802572
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9933544
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8366d4254621ee142804ee460119165f, type: 3}
+--- !u!4 &8660958800233774524 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8660958800233972122}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8841788659170162263
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938001514287736523}
+    m_Modifications:
+    - target: {fileID: 172174, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_Name
+      value: SM_Veh_Extra_Gun_01_Pirate (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.406008
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.9991199
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.014808512
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70695174
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.30000013
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8366d4254621ee142804ee460119165f, type: 3}
+--- !u!4 &8841788659170364017 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 490534, guid: 8366d4254621ee142804ee460119165f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8841788659170162263}
   m_PrefabAsset: {fileID: 0}
