@@ -54,9 +54,9 @@ public class ShipBehavior : MonoBehaviour
         if (Input.GetKey(KeyCode.W)) { 
             PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, forward * MaxSpeed, Power);
         }
-        if (Input.GetKey(KeyCode.S)) {
-            PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, forward * -MaxSpeed, Power);
-        }
+        //if (Input.GetKey(KeyCode.S)) {
+        //    PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, forward * -MaxSpeed, Power);
+        //}
 
         //Motor Animation // Particle system
         Motor.SetPositionAndRotation(Motor.position, transform.rotation * StartRotation * Quaternion.Euler(0, 10f * steer, 0));

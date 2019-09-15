@@ -2,5 +2,8 @@
   "menu.start": "Empezar",
   "menu.acceptButton": "Aceptar",
   "menu.declineButton": "Rechazar",
-  "quest.test": "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest"
+  "quest.test": "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
+  "menu.continue": "Continuar",
+  "menu.newGame": "Nueva Partida",
+  "loading.loading": "Cargando"
 }

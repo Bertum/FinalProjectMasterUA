@@ -1,11 +1,12 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShipwreckProceduralScene : BaseProceduralScene
 {
     private GameObject seaWrapper;
     private GameObject boatPrefab;
-    private ArrayList debrisPrefabs;
+    private List<GameObject> debrisPrefabs;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,7 @@ public class ShipwreckProceduralScene : BaseProceduralScene
         boatPrefab = Resources.Load("Prefabs/Procedural/Boat") as GameObject;
         loadBoat();
 
-        debrisPrefabs = new ArrayList();
+        debrisPrefabs = new List<GameObject>();
         debrisPrefabs.Add(Resources.Load("Prefabs/Procedural/Debris1") as GameObject);
         debrisPrefabs.Add(Resources.Load("Prefabs/Procedural/Debris2") as GameObject);
         debrisPrefabs.Add(Resources.Load("Prefabs/Procedural/Debris3") as GameObject);

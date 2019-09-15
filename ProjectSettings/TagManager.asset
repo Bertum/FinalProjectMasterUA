@@ -8,6 +8,7 @@ TagManager:
   - Sky
   - SeaWrapper
   - BottomWrapper
+  - MapWrapper
   layers:
   - Default
   - TransparentFX
