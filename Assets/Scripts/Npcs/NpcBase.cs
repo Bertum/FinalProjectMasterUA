@@ -1,20 +1,62 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static Constants;
 
 public class NpcBase : MonoBehaviour {
 
+    enum EState {
+        Idle,
+        Busy,
+        Sliding
+    }
+
     //Attributes definition.
     public string npcName = "";
     public int level = 0;
-    public JobClass jobClass;
+    public int jobLevel;
+    public EJobType npcJob;    
     public int strength = 0;
     public int dexterity = 0;
     public int intelligence = 0;
     public int sight = 0;
-    private int maxHealthPoints;
-    private int currentHealthPoints;
+    private float maxHealthPoints;
+    private float currentHealthPoints;
+    private bool bPlayerTeam;
+    private JobClass jobClass;
+    private Vector3 startPosition;
+    private Vector3 slideTargetPosition;
+    private EState state;
+    public Slider healthBarSlider;
+    private Action onSlideCompleted;
+    private Action onAttackCompleted;
+
+    private void Start() {
+        this.jobClass = new JobClass(npcJob, jobLevel);
+        setMaxHP();
+        state = EState.Idle;
+        startPosition = transform.position;
+        this.healthBarSlider.value = CalculateHealthBarValue();
+    }
+
+    private void Update() {
+        switch (state) {
+            case EState.Idle:
+                break;
+            case EState.Busy:
+                break;
+            case EState.Sliding:
+                transform.position = Vector3.MoveTowards(transform.position, slideTargetPosition, 5 * Time.deltaTime);
+                if(Vector3.Distance(transform.position,slideTargetPosition) < 1f) {
+                    transform.position = slideTargetPosition;
+                    onSlideCompleted();
+                }
+                break;
+        }
+        this.healthBarSlider.value = CalculateHealthBarValue();
+    }
 
     //Constructor for player npcs
     public NpcBase(string npcName, int npclevel, EJobType npcJob, int npcJobLevel, int npcStrength, int npcDexterity, int npcIntelligence, int npcSight) {
@@ -26,6 +68,7 @@ public class NpcBase : MonoBehaviour {
         this.intelligence = npcIntelligence;
         this.sight = npcSight;
         setMaxHP();
+        this.healthBarSlider.value = CalculateHealthBarValue();
     }
 
     //Constructor for random enemies
@@ -38,7 +81,7 @@ public class NpcBase : MonoBehaviour {
     }
 
     public void SetNewName(string newName) {
-        name = newName;
+        npcName = newName;
     }
 
     public void SwitchJob(EJobType newJob) {
@@ -69,18 +112,70 @@ public class NpcBase : MonoBehaviour {
         currentHealthPoints = maxHealthPoints;
     }
 
+    public void AttackEnemy(NpcBase defender, Action onAttackCompleted) {
+        if (this.AttackDamage() > defender.EvadeDamage()) {
+            //transform.LookAt(defender.transform.position);
+            Vector3 slideTargetPosition = defender.transform.position;
+            SlideToPosition(slideTargetPosition, () => {
+                state = EState.Busy;                
+                defender.OnDamageReceived(this.AttackDamage());
+                SlideToPosition(startPosition, () => {
+                    state = EState.Idle;
+                    onAttackCompleted();
+                });
+            });
+        } else {
+            Vector3 slideTargetPosition = defender.transform.position;
+            SlideToPosition(slideTargetPosition, () => {
+                state = EState.Busy;
+                print(this.npcName+" Missed "+defender.npcName+"!");
+                SlideToPosition(startPosition, () => {
+                    state = EState.Idle;
+                    onAttackCompleted();
+                });
+            });
+        }
+    }
+
     //To use in a battle to hurt enemies
-    public int AttackDamage() {
-        return strength+ jobClass.jobLevel;
+    private int AttackDamage() {
+        return strength + jobClass.jobLevel + UnityEngine.Random.Range(0,strength);
     }
 
     //To use in a battle to avoid damage
-    public int EvadeDamage() {
+    private int EvadeDamage() {
         return dexterity + jobClass.jobLevel;
     }
 
     //To use when AttackDamage received > this Evade
-    public void OnDamageReceived(int damage) {
-        currentHealthPoints -= (damage-dexterity/2);
+    private void OnDamageReceived(int damage) {
+        this.currentHealthPoints -= (damage-dexterity/2);
     }
+
+    public bool GetPlayerTeam() {
+        return bPlayerTeam;
+    }
+
+    public void SetPlayerTeam(bool isInPlayerTeam) {
+        bPlayerTeam = isInPlayerTeam;
+    }
+
+    public float getNpcMaximunHealth() {
+        return this.maxHealthPoints;
+    }
+
+    public float GetNpcCurrentHealth() {
+        return this.currentHealthPoints;
+    }
+
+    private float CalculateHealthBarValue() {
+        return (this.currentHealthPoints/maxHealthPoints);
+    }
+         
+    private void SlideToPosition(Vector3 position, Action onSlideComplete) {
+        this.slideTargetPosition = position;
+        this.onSlideCompleted = onSlideComplete;
+        state = EState.Sliding;
+    }
+
 }

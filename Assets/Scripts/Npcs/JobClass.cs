@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Constants;
 
-public class JobClass : MonoBehaviour {
+public class JobClass : ScriptableObject {
     public EJobType jobType = 0;
     public int jobLevel = 0;
     private int jobExperience;
