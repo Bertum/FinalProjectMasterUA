@@ -5,6 +5,7 @@
     public const string SCENETOLOAD = "SceneToLoad";
     public const string MUSICVOLUME = "MusicVolume";
     public const string EFFECTSVOLUME = "EffectsVolume";
+    public enum EJobType { Rookie, Official, Cook, Searcher, Pilot};
+    public enum EEndBattleStatus { Ongoing, PlayerWon, PlayerLost};
     public const string NEWGAME = "NewGame";
-    public enum EJobType { Rookie, Official, Cook, Searcher, Pilot };
 }
