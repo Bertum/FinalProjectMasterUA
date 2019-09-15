@@ -23,9 +23,9 @@ public class LoadingScreenController : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
 
-        AsyncOperation async = SceneManager.LoadSceneAsync(sceneName);
+        AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneName);
 
-        while (!async.isDone)
+        while (!asyncOp.isDone)
         {
             yield return null;
         }

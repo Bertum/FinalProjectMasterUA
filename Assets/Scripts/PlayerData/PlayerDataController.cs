@@ -2,20 +2,22 @@
 
 public class PlayerDataController : MonoBehaviour
 {
-    private SaveLoadService SaveLoadService;
+    private SaveLoadService saveLoadService;
     public PlayerData PlayerData;
     //Define if we can save, for example we cannot save in combat
     public bool CanSave;
 
     private void Awake()
     {
+        PlayerData = new PlayerData();
+        saveLoadService = new SaveLoadService();
         DontDestroyOnLoad(this.gameObject);
         CanSave = true;
     }
 
     public void Load()
     {
-        PlayerData = SaveLoadService.Load();
+        PlayerData = saveLoadService.Load();
     }
 
     public void Save()
@@ -23,7 +25,7 @@ public class PlayerDataController : MonoBehaviour
         if (CanSave)
         {
             //We will need to add logic here
-            SaveLoadService.Save(PlayerData);
+            saveLoadService.Save(PlayerData);
         }
     }
 }
