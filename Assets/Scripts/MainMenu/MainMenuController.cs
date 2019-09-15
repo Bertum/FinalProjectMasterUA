@@ -27,12 +27,14 @@ public class MainMenuController : MonoBehaviour
     {
         if (saveLoadService.CheckExistSave())
         {
+            PlayerPrefs.SetInt(Constants.NEWGAME, 0);
             sceneLoaderService.LoadScene(SceneNames.GAME);
         }
     }
 
     public void LoadNewGame()
     {
+        PlayerPrefs.SetInt(Constants.NEWGAME, 1);
         sceneLoaderService.LoadScene(SceneNames.GAME);
     }
 }
