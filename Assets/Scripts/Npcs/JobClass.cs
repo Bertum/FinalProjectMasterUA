@@ -5,7 +5,7 @@ using static Constants;
 
 public class JobClass : ScriptableObject {
     public EJobType jobType = 0;
-    public int jobLevel = 0;
+    public int jobLevel = 1;
     private int jobExperience;
 
     public JobClass(EJobType jobType, int jobLevel) {
@@ -30,6 +30,7 @@ public class JobClass : ScriptableObject {
         switch (jobType) {
             case EJobType.Rookie:
                 if((jobExperience/20) % jobLevel > jobLevel) {
+                    jobLevel++;
                     //TODO LevelUp
                     //Esto igual debería ir en la clase Npc?
                     //Si subes de nivel Aumentas en +1 todos tus stats menos un principal a +2
@@ -38,6 +39,7 @@ public class JobClass : ScriptableObject {
             default:
                 if (((jobExperience / 20) + (25 * jobLevel)) % jobLevel > jobLevel) {
                     //TODO LevelUp
+                    jobLevel++;
                 }
                 break;
         }
