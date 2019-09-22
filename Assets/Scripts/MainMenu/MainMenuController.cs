@@ -28,13 +28,18 @@ public class MainMenuController : MonoBehaviour
         if (saveLoadService.CheckExistSave())
         {
             PlayerPrefs.SetInt(Constants.NEWGAME, 0);
-            sceneLoaderService.LoadScene(SceneNames.GAME);
+            sceneLoaderService.LoadScene(SceneNames.MAIN_SCENE);
         }
     }
 
     public void LoadNewGame()
     {
         PlayerPrefs.SetInt(Constants.NEWGAME, 1);
-        sceneLoaderService.LoadScene(SceneNames.GAME);
+        sceneLoaderService.LoadScene(SceneNames.MAIN_SCENE);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

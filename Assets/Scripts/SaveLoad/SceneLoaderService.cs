@@ -7,6 +7,6 @@ public class SceneLoaderService
     {
 
         PlayerPrefs.SetString(Constants.SCENETOLOAD, sceneName);
-        SceneManager.LoadScene(SceneNames.LOADINGSCENE);
+        SceneManager.LoadScene(SceneNames.LOADING_SCENE);
     }
 }
