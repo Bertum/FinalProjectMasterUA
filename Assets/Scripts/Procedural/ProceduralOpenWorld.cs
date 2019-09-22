@@ -24,11 +24,11 @@ public class ProceduralOpenWorld : MonoBehaviour
     private SaveLoadService saveLoadService;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         saveLoadService = new SaveLoadService();
         playerDataController = FindObjectOfType<PlayerDataController>().GetComponent<PlayerDataController>();
-        if (!PlayerPrefs.HasKey(Constants.NEWGAME) || PlayerPrefs.GetInt(Constants.NEWGAME) == 1)
+        if (true || !PlayerPrefs.HasKey(Constants.NEWGAME) || PlayerPrefs.GetInt(Constants.NEWGAME) == 1)
         {
             seaWrapper = GameObject.FindGameObjectWithTag("SeaWrapper");
             seaPrefab = Resources.Load("Prefabs/Procedural/OceanTile") as GameObject;

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6691471031157024453}
   - component: {fileID: 6691471031155796033}
   - component: {fileID: 6691471031154644011}
+  - component: {fileID: 5528611563886111505}
   m_Layer: 0
-  m_Name: SM_Prop_Debris_03
+  m_Name: Debris3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,3 +78,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5528611563886111505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691471031156644575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21aff2522d83c01448b0c5fce128b256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterLevel: 3
+  floatThreshold: 0.1
+  downForce: 0.125
