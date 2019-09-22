@@ -14,8 +14,8 @@ public class BattleScript : MonoBehaviour {
     }
 
     public List<NpcBase> goodBois = new List<NpcBase>();
-    public List<NpcBase> baddies = new List<NpcBase>();
-    public int turn;
+    public List<NpcBase> badBois = new List<NpcBase>();
+    private int turn;
     private List<NpcBase> orderList = new List<NpcBase>();
     private List<NpcBase> playerTeam = new List<NpcBase>();
     private List<NpcBase> enemyTeam = new List<NpcBase>();
@@ -32,8 +32,14 @@ public class BattleScript : MonoBehaviour {
             baddies.Add(new NpcBase(UnityEngine.Random.Range(0, 3), EJobType.Rookie, UnityEngine.Random.Range(0, 5), UnityEngine.Random.Range(0, 6), UnityEngine.Random.Range(0, 6)));
             baddies[i].SetPlayerTeam(false);
         }*/
-        foreach (NpcBase npc in goodBois) {
-            npc.SetPlayerTeam(true);
+        GameObject playerLocations = GameObject.FindGameObjectWithTag("PlayerLocations");
+        GameObject enemyLocations = GameObject.FindGameObjectWithTag("EnemyLocations");
+        for (int i = 0;i<goodBois.Count;i++) {
+            goodBois[i].SetPlayerTeam(true);
+            goodBois[i].SetStartPosition(playerLocations.transform.GetChild(i).transform.position);
+        }
+        for (int i = 0; i < badBois.Count; i++) {
+            badBois[i].SetStartPosition(enemyLocations.transform.GetChild(i).transform.position);
         }
         turn = 0;
         PrepareBattle();
@@ -61,6 +67,9 @@ public class BattleScript : MonoBehaviour {
                 }
                 break;
             case EEndBattleStatus.PlayerWon:
+                foreach (NpcBase npc in playerTeam) {
+                    npc.GainExperience(enemyTeam.Count * 5);
+                }
                 print("Battle has ended!, the player Won, do something!");
                 break;
             case EEndBattleStatus.PlayerLost:
@@ -73,7 +82,7 @@ public class BattleScript : MonoBehaviour {
 
     private void PrepareBattle() {
         orderList.AddRange(goodBois);
-        orderList.AddRange(baddies);
+        orderList.AddRange(badBois);
         orderList.Sort(SetBattleOrder);
         //PrintOrderList();
 

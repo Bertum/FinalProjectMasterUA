@@ -37,7 +37,6 @@ public class NpcBase : MonoBehaviour {
         this.jobClass = new JobClass(npcJob, jobLevel);
         setMaxHP();
         state = EState.Idle;
-        startPosition = transform.position;
         this.healthBarSlider.value = CalculateHealthBarValue();
     }
 
@@ -152,12 +151,21 @@ public class NpcBase : MonoBehaviour {
         this.currentHealthPoints -= (damage-dexterity/2);
     }
 
+    public void GainExperience(int experience) {
+        jobClass.IncreaseJobExperience(experience);
+    }
+
     public bool GetPlayerTeam() {
         return bPlayerTeam;
     }
 
     public void SetPlayerTeam(bool isInPlayerTeam) {
         bPlayerTeam = isInPlayerTeam;
+    }
+
+    public void SetStartPosition(Vector3 mainPosition) {
+        transform.position = mainPosition;
+        startPosition = transform.position;
     }
 
     public float getNpcMaximunHealth() {
