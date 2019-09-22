@@ -11,6 +11,7 @@ TagManager:
   - MapWrapper
   - PlayerLocations
   - EnemyLocations
+  - EventsWrapper
   layers:
   - Default
   - TransparentFX
