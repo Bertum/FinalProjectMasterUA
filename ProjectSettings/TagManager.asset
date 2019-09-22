@@ -9,6 +9,8 @@ TagManager:
   - SeaWrapper
   - BottomWrapper
   - MapWrapper
+  - PlayerLocations
+  - EnemyLocations
   layers:
   - Default
   - TransparentFX

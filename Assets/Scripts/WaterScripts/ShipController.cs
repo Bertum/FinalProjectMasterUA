@@ -36,14 +36,15 @@ public class ShipController : MonoBehaviour {
 
     private void Movement() {
         verticalInput = Input.GetAxis("Vertical");
-        
-        movementFactor = Mathf.Lerp(movementFactor, verticalInput, Time.deltaTime / movementThreshold);        
-        transform.Translate(0.0f, 0.0f, movementFactor * shipSpeed);
+        if (verticalInput > 0) {
+            movementFactor = Mathf.Lerp(movementFactor, verticalInput, Time.deltaTime / movementThreshold);
+            transform.Translate(0.0f, 0.0f, movementFactor * shipSpeed);
+        }
     }
 
     private void Steer() {
         horizontalInput = Input.GetAxis("Horizontal");
-        steerFactor = Mathf.Lerp(steerFactor, horizontalInput * verticalInput, Time.deltaTime / movementThreshold);
+        steerFactor = Mathf.Lerp(steerFactor, horizontalInput, Time.deltaTime / movementThreshold);
         transform.Rotate(0.0f, steerFactor * steerSpeed, 0.0f);
     }
 
@@ -51,7 +52,7 @@ public class ShipController : MonoBehaviour {
         GameObject dome = GameObject.FindGameObjectWithTag("Sky");
         Renderer domeRenderer = dome.GetComponent<Renderer>();
         offset += Time.deltaTime / (24);
-        domeRenderer.material.mainTextureOffset = new Vector2(offset,0);
+        domeRenderer.material.mainTextureOffset = new Vector2(offset, 0);
     }
 
 }
