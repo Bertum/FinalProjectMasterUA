@@ -5,7 +5,8 @@
   "quest.test": "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
   "menu.continue": "Continuar",
   "menu.newGame": "Nueva Partida",
-  "menu.exit": "Salir",
-  "menu.credits": "Somos tres en un reloj y Alberto paga la coca de UA",
+  "menu.exit": "Salir",  
+  "menu.creditsHeader": "Créditos:",
+  "menu.credits": "Programación:	Alberto Delgado Cruz	Miguel Agudo Ballesteros	Óscar Sánchez Fernández Gráficos:	JoannaVu - Black Pearl Font Kenney - UI Assets	Synty Studios - Pirates Pack",
   "loading.loading": "Cargando"
 }
