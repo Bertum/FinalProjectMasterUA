@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,7 +44,7 @@ public class LanguageController : MonoBehaviour
     /// <returns></returns>
     public string GetTextById(string id)
     {
-        string value = null;
+        string value;
         if (!texts.TryGetValue(id, out value))
         {
             value = string.Format("Text with id {0} not found", id);
@@ -64,5 +64,10 @@ public class LanguageController : MonoBehaviour
                 text.text = GetTextById(translatableComponente.TextId);
             }
         }
+    }
+
+    public List<string> GetTips()
+    {
+        return texts.Where(w => w.Key.Contains("tip.")).Select(s => s.Value).ToList();
     }
 }

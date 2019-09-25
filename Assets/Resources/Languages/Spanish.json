@@ -8,5 +8,7 @@
   "menu.exit": "Salir",  
   "menu.creditsHeader": "Créditos:",
   "menu.credits": "Programación:	Alberto Delgado Cruz	Miguel Agudo Ballesteros	Óscar Sánchez Fernández Gráficos:	JoannaVu - Black Pearl Font Kenney - UI Assets	Synty Studios - Pirates Pack",
-  "loading.loading": "Cargando"
+  "menu.exit": "Salir",
+  "loading.loading": "Cargando",
+  "tip.test": "Consejo de prueba"
 }
