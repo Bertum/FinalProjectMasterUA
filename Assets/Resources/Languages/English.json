@@ -6,7 +6,8 @@
   "menu.continue": "Continue",
   "menu.newGame": "New Game",
   "menu.exit": "Exit",
-  "menu.credits": "Somos tres en un reloj y Alberto paga la coca de UA",
+  "menu.creditsHeader": "Credits:",  
+  "menu.credits": "Programing:	Alberto Delgado Cruz	Miguel Agudo Ballesteros	Oscar Sanchez Fernandez Graphics:	JoannaVu - Black Pearl Font Kenney - UI Assets	Synty Studios - Pirates Pack	"
   "loading.loading": "Loading",
   "tip.test": "Tip for testing"
 }
