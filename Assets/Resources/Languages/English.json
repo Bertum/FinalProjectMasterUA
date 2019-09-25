@@ -6,8 +6,8 @@
   "menu.continue": "Continue",
   "menu.newGame": "New Game",
   "menu.exit": "Exit",
-  "menu.creditsHeader": "Credits:",  
-  "menu.credits": "Programing:	Alberto Delgado Cruz	Miguel Agudo Ballesteros	Oscar Sanchez Fernandez Graphics:	JoannaVu - Black Pearl Font Kenney - UI Assets	Synty Studios - Pirates Pack	"
+  "menu.creditsHeader": "Credits:",
+  "menu.credits": "Programing: \n Alberto Delgado Cruzado \n Miguel Agudo Ballesteros \n Oscar Sanchez Fernandez  \n Graphics: \n JoannaVu - Black Pearl Font \n Kenney - UI Assets \n Synty Studios - Pirates Pack",
   "loading.loading": "Loading",
   "tip.test": "Tip for testing"
 }

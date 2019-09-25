@@ -5,10 +5,9 @@
   "quest.test": "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
   "menu.continue": "Continuar",
   "menu.newGame": "Nueva Partida",
-  "menu.exit": "Salir",  
-  "menu.creditsHeader": "Créditos:",
-  "menu.credits": "Programación:	Alberto Delgado Cruz	Miguel Agudo Ballesteros	Óscar Sánchez Fernández Gráficos:	JoannaVu - Black Pearl Font Kenney - UI Assets	Synty Studios - Pirates Pack",
   "menu.exit": "Salir",
+  "menu.creditsHeader": "Créditos:",
+  "menu.credits": "Programación: \n Alberto Delgado Cruzado \n  Miguel Agudo Ballesteros \n  Óscar Sánchez Fernández \n Gráficos: \n JoannaVu - Black Pearl Font \n Kenney - UI Assets \n Synty Studios - Pirates Pack",
   "loading.loading": "Cargando",
   "tip.test": "Consejo de prueba"
 }
