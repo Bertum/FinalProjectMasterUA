@@ -36,16 +36,16 @@ MENÚS (Miguel):
 - Menú in game para continuar, salir del juego y volver al menú principal
 
 ESCENA DE CARGA (Alberto):
-- Que sea más bonita.
-- Tiempo minimo de carga.
-- Poner tips y frases graciosas.
++ Que sea más bonita.
++ Tiempo minimo de carga.
++ Poner tips y frases graciosas.
 
 GUARDADO AUTOMATICO (Alberto):
-- Guardar posicion del barco
-- Al generar una partida
++ Guardar posicion del barco
++ Al generar una partida
 - Al entrar en una isla (BLOCKED)
 - Al salir de una isla (BLOCKED)
-- Al salir del juego
+- Al salir del juego (Esperando menu de pausa)
 
 CONTROL BARCO (Miguel):
 - Ajustar velocidad máxima

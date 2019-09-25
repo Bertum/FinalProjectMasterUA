@@ -7,5 +7,6 @@
   "menu.newGame": "New Game",
   "menu.exit": "Exit",
   "menu.credits": "Somos tres en un reloj y Alberto paga la coca de UA",
-  "loading.loading": "Loading"
+  "loading.loading": "Loading",
+  "tip.test": "Tip for testing"
 }
