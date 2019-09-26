@@ -28,24 +28,25 @@ PREFABS (Oscar):
 + Retocar islas
 - Prefabs de edificios
 - Prefab isla nivel 3
-- Retocar los restos del naufragio (hacer mas grandes) y añadir rigid bodies sin gravedad
+-* Retocar los restos del naufragio (hacer mas grandes) y añadir rigid bodies sin gravedad
 - Añadir otros elementos al mapa que le den buen rollo
+- Añadir naufragos
 
 MENÚS (Miguel):
 - Que el menú principal sea bonito
 - Menú in game para continuar, salir del juego y volver al menú principal
 
 ESCENA DE CARGA (Alberto):
-+ Que sea más bonita.
-+ Tiempo minimo de carga.
-+ Poner tips y frases graciosas.
+- Que sea más bonita.
+- Tiempo minimo de carga.
+- Poner tips y frases graciosas.
 
 GUARDADO AUTOMATICO (Alberto):
-+ Guardar posicion del barco
-+ Al generar una partida
+- Guardar posicion del barco
+- Al generar una partida
 - Al entrar en una isla (BLOCKED)
 - Al salir de una isla (BLOCKED)
-- Al salir del juego (Esperando menu de pausa)
+- Al salir del juego
 
 CONTROL BARCO (Miguel):
 - Ajustar velocidad máxima

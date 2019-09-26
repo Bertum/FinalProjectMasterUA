@@ -36,11 +36,11 @@ public class ShipwreckProceduralScene : BaseProceduralScene
 
     // Loads ramdom positioned wreck
     void loadDebris() {
-        int numberOfDebris = Random.Range(10, 15);
+        int numberOfDebris = Random.Range(6, 10);
 
         for (int x = 1; x <= numberOfDebris; x++)
         {
-            GameObject debris = GameObject.Instantiate((GameObject)debrisPrefabs[Random.Range(0,2)], new Vector3(Random.Range(50, 250), SURFACE_Y, Random.Range(50, 250)), Quaternion.identity);
+            GameObject debris = GameObject.Instantiate((GameObject)debrisPrefabs[Random.Range(0,3)], new Vector3(Random.Range(50, 250), SURFACE_Y, Random.Range(50, 250)), Quaternion.identity);
             debris.transform.parent = seaWrapper.transform;
         }
     }
