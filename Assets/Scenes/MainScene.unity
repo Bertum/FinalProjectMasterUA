@@ -342,7 +342,6 @@ MonoBehaviour:
     TotalPirates: 0
     TotalGold: 0
     MapData: []
-  CanSave: 0
 --- !u!4 &1221350046
 Transform:
   m_ObjectHideFlags: 0

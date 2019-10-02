@@ -23,7 +23,7 @@ public class Island
                 prefabStr = "Prefabs/Procedural/Island2";
                 break;
             case 3:
-                prefabStr = "Prefabs/Procedural/Island1";
+                prefabStr = "Prefabs/Procedural/Island3";
                 break;
             default:
                 prefabStr = "Prefabs/Procedural/Island1";
