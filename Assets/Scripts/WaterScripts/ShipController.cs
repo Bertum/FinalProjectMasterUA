@@ -5,47 +5,36 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour {
 
-    public Vector3 centerOfMass;
-    public float shipSpeed = 5;
-    public float steerSpeed = 5;
-    public float movementThreshold = 10.0f;
+    public float shipSpeed = 20;
     float offset;
 
-    Transform m_COM;
     float verticalInput;
     float movementFactor;
     float horizontalInput;
     float steerFactor;
+    Rigidbody rigidBody;
+
+    private void Start() {
+        rigidBody = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     void Update() {
-        Balance();
         Movement();
-        Steer();
         DayTime();
-    }
-
-    private void Balance() {
-        if (!m_COM) {
-            m_COM = new GameObject("COM").transform;
-            m_COM.SetParent(transform);
-        }
-        m_COM.position = centerOfMass;
-        GetComponent<Rigidbody>().centerOfMass = m_COM.position;
     }
 
     private void Movement() {
         verticalInput = Input.GetAxis("Vertical");
-        if (verticalInput > 0) {
-            movementFactor = Mathf.Lerp(movementFactor, verticalInput, Time.deltaTime / movementThreshold);
-            transform.Translate(0.0f, 0.0f, movementFactor * shipSpeed);
-        }
-    }
-
-    private void Steer() {
         horizontalInput = Input.GetAxis("Horizontal");
-        steerFactor = Mathf.Lerp(steerFactor, horizontalInput, Time.deltaTime / movementThreshold);
-        transform.Rotate(0.0f, steerFactor * steerSpeed, 0.0f);
+        if (verticalInput > 0) {
+            rigidBody.velocity = transform.forward * verticalInput * shipSpeed;
+        }
+        if (horizontalInput > 0) {
+            transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * shipSpeed, Space.World);
+        } else if (horizontalInput < 0) {
+            transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * shipSpeed, Space.World);
+        }
     }
 
     private void DayTime() {
