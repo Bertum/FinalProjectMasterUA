@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 7943578997728816429}
   m_Layer: 0
   m_Name: PlayerShip
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterLevel: 3
   floatThreshold: 0.1
-  downForce: 0
+  downForce: 0.05
 --- !u!114 &7943578997728816429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,10 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033a468ce76f0ac48bb3d69a96067e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerOfMass: {x: 0, y: 0, z: 0}
-  shipSpeed: 5
-  steerSpeed: 5
-  movementThreshold: 10
+  shipSpeed: 10
 --- !u!1 &8870195595405924797
 GameObject:
   m_ObjectHideFlags: 0
