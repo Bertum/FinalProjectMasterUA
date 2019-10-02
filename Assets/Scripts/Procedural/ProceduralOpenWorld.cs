@@ -41,7 +41,9 @@ public class ProceduralOpenWorld : MonoBehaviour
 
             mapWrapper = GameObject.FindGameObjectWithTag("MapWrapper");
             islandArray = new List<Island>();
-            generateIslands(15);
+            generateIslands(9,1);
+            generateIslands(6,2);
+            generateIslands(3,3);
             loadIslands();
 
             playerShipPrefab = Resources.Load("Prefabs/Procedural/PlayerShip") as GameObject;
@@ -129,11 +131,11 @@ public class ProceduralOpenWorld : MonoBehaviour
         }
     }
 
-    void generateIslands(int numberOfIslands)
+    void generateIslands(int numberOfIslands, int lvl)
     {
         for (int i = 1; i <= numberOfIslands; i++)
         {
-            Island island = new Island(UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), UnityEngine.Random.Range(1,3));
+            Island island = new Island(UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), lvl);
             if (!isAnotherIslandClose(island.getX(), island.getZ())) {
                 islandArray.Add(island);
             } else {
