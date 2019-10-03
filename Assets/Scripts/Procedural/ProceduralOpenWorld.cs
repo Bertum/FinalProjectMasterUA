@@ -41,9 +41,9 @@ public class ProceduralOpenWorld : MonoBehaviour
 
             mapWrapper = GameObject.FindGameObjectWithTag("MapWrapper");
             islandArray = new List<Island>();
-            generateIslands(9,1);
-            generateIslands(6,2);
-            generateIslands(3,3);
+            generateIslands(9, 1);
+            generateIslands(6, 2);
+            generateIslands(3, 3);
             loadIslands();
 
             playerShipPrefab = Resources.Load("Prefabs/Procedural/PlayerShip") as GameObject;
@@ -136,9 +136,12 @@ public class ProceduralOpenWorld : MonoBehaviour
         for (int i = 1; i <= numberOfIslands; i++)
         {
             Island island = new Island(UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), lvl);
-            if (!isAnotherIslandClose(island.getX(), island.getZ())) {
+            if (!isAnotherIslandClose(island.getX(), island.getZ()))
+            {
                 islandArray.Add(island);
-            } else {
+            }
+            else
+            {
                 i--;
             }
         }
@@ -157,14 +160,16 @@ public class ProceduralOpenWorld : MonoBehaviour
         });
     }
 
-    bool isAnotherIslandClose(float x, float z) {
+    bool isAnotherIslandClose(float x, float z)
+    {
         bool result = false;
         double pot = 2;
         for (int i = 0; i < islandArray.Count; i++)
         {
             double dx = ((Island)islandArray[i]).getX() - x;
             double dz = ((Island)islandArray[i]).getZ() - z;
-            if (Math.Sqrt(Math.Pow(dx, pot) + Math.Pow(dz, pot)) < 80) {
+            if (Math.Sqrt(Math.Pow(dx, pot) + Math.Pow(dz, pot)) < 80)
+            {
                 result = true;
                 break;
             }
