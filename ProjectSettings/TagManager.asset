@@ -12,6 +12,9 @@ TagManager:
   - PlayerLocations
   - EnemyLocations
   - EventsWrapper
+  - SeaTile
+  - SandTile
+  - SandDecorations
   layers:
   - Default
   - TransparentFX

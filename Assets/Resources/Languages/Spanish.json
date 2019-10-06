@@ -9,5 +9,7 @@
   "menu.creditsHeader": "Créditos:",
   "menu.credits": "Programación: \n Alberto Delgado Cruzado \n  Miguel Agudo Ballesteros \n  Óscar Sánchez Fernández \n Gráficos: \n JoannaVu - Black Pearl Font \n Kenney - UI Assets \n Synty Studios - Pirates Pack",
   "loading.loading": "Cargando",
-  "tip.test": "Consejo de prueba"
+  "tip.test": "Consejo de prueba",
+  "menu.gamePaused": "Pausado",
+  "menu.mainMenu": "Menú Principal"
 }

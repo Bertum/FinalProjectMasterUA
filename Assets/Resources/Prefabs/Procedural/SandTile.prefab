@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 116626, guid: 6d2853b9421ab6840a07a97d66fcef8c, type: 3}
       propertyPath: m_Name
-      value: SM_Env_Tile_Sand_01
+      value: SandTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 116626, guid: 6d2853b9421ab6840a07a97d66fcef8c, type: 3}
+      propertyPath: m_TagString
+      value: SandTile
       objectReference: {fileID: 0}
     - target: {fileID: 401274, guid: 6d2853b9421ab6840a07a97d66fcef8c, type: 3}
       propertyPath: m_LocalPosition.x
