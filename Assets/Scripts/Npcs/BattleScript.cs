@@ -235,25 +235,25 @@ public class BattleScript : MonoBehaviour {
 
     private void PrintOrderWithDamage() {
         for (int i = 0; i < orderList.Count; i++) {
-            print("For NPC " + i + " max health is: " + orderList[i].getNpcMaximunHealth() + " and currently is " + orderList[i].GetNpcCurrentHealth());
+            print("For NPC " + i + " max health is: " + orderList[i].GetNpcMaximunHealth() + " and currently is " + orderList[i].GetNpcCurrentHealth());
         }
     }
 
     private void PrintEndOfBattle() {
         for (int i = 0; i < playerTeam.Count; i++) {
-            print("Player " + i + " max health is: " + playerTeam[i].getNpcMaximunHealth() + " and currently is " + playerTeam[i].GetNpcCurrentHealth());
+            print("Player " + i + " max health is: " + playerTeam[i].GetNpcMaximunHealth() + " and currently is " + playerTeam[i].GetNpcCurrentHealth());
         }
         for (int i = 0; i < enemyTeam.Count; i++) {
-            print("Enemy " + i + " max health is: " + enemyTeam[i].getNpcMaximunHealth() + " and currently is " + enemyTeam[i].GetNpcCurrentHealth());
+            print("Enemy " + i + " max health is: " + enemyTeam[i].GetNpcMaximunHealth() + " and currently is " + enemyTeam[i].GetNpcCurrentHealth());
         }
     }
 
     private void PrintTurn() {
         for (int i = 0; i < playerTeam.Count; i++) {
-            print("Turn " + turn + " for Player " + i + " max health is: " + playerTeam[i].getNpcMaximunHealth() + " and currently is " + playerTeam[i].GetNpcCurrentHealth());
+            print("Turn " + turn + " for Player " + i + " max health is: " + playerTeam[i].GetNpcMaximunHealth() + " and currently is " + playerTeam[i].GetNpcCurrentHealth());
         }
         for (int i = 0; i < enemyTeam.Count; i++) {
-            print("Turn " + turn + " for Enemy " + i + " max health is: " + enemyTeam[i].getNpcMaximunHealth() + " and currently is " + enemyTeam[i].GetNpcCurrentHealth());
+            print("Turn " + turn + " for Enemy " + i + " max health is: " + enemyTeam[i].GetNpcMaximunHealth() + " and currently is " + enemyTeam[i].GetNpcCurrentHealth());
         }
     }
 

@@ -155,6 +155,9 @@ public class ProceduralOpenWorld : MonoBehaviour
             Position = playerShip.transform.position,
             Rotation = playerShip.transform.rotation
         });
+        ShipController controller = playerShip.GetComponentInChildren<ShipController>();
+        controller.SetInitialCrew();
+        controller.SetInitialResources();
     }
 
     bool isAnotherIslandClose(float x, float z) {
