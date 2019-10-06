@@ -15,8 +15,8 @@ public class TranslatableComponent : MonoBehaviour
         this.GetComponent<Text>().text = LanguageController.instance.GetTextById(TextId);
     }
 
-    //private void OnEnable()
-    //{
-    //    ChangeTextLanguage();
-    //}
+    private void OnEnable()
+    {
+        ChangeTextLanguage();
+    }
 }
