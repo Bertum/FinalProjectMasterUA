@@ -9,4 +9,10 @@
     public enum EEndBattleStatus { Ongoing, PlayerWon, PlayerLost};
     public enum EResourceType { Food, Water, Medicine, Gold, Wood };
     public const string NEWGAME = "NewGame";
+    public struct DayTime {
+        public const float Night = 0.5f;
+        public const float MidDay = 0.75f;
+        public const float Day = 1f;
+        public const float Afternoon = 1.25f;
+    }
 }
