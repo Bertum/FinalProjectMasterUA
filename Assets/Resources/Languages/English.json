@@ -11,5 +11,15 @@
   "loading.loading": "Loading",
   "tip.test": "Tip for testing",
   "menu.gamePaused": "Paused",
-  "menu.mainMenu": "Main Menu"
+  "menu.mainMenu": "Main Menu",
+  "stats.strength": "Strength",
+  "stats.dexterity": "Dexterity",
+  "stats.intelligence": "Intelligence",
+  "job.rookie": "Rookie",
+  "job.official": "Official",
+  "job.cook": "Cook",
+  "job.searcher": "Searcher",
+  "job.pilot": "Pilot",
+  "job.medic": "Medic",
+  "job.carpenter": "Carpenter"
 }

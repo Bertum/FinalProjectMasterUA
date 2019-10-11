@@ -15,6 +15,7 @@ TagManager:
   - SeaTile
   - SandTile
   - SandDecorations
+  - Island
   layers:
   - Default
   - TransparentFX
