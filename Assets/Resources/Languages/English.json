@@ -21,5 +21,6 @@
   "job.searcher": "Searcher",
   "job.pilot": "Pilot",
   "job.medic": "Medic",
-  "job.carpenter": "Carpenter"
+  "job.carpenter": "Carpenter",
+  "menu.buy": "Buy"
 }

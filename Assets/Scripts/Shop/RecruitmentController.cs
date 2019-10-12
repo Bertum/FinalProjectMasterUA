@@ -24,6 +24,7 @@ public class RecruitmentController : MonoBehaviour
 
     public void Buy(EJobType type)
     {
+        Debug.Log(type.ToString());
     }
 
     public void CreateList(List<EJobType> jobs)
@@ -39,6 +40,8 @@ public class RecruitmentController : MonoBehaviour
             shopItem.transform.GetChild(0).GetChild(2).GetChild(3).GetComponent<Text>().text = "2";
             //Intelligence
             shopItem.transform.GetChild(0).GetChild(2).GetChild(5).GetComponent<Text>().text = "3";
+            //Button
+            shopItem.transform.GetChild(0).GetChild(3).GetComponent<Button>().onClick.AddListener(delegate { Buy(job); });
         }
     }
 }
