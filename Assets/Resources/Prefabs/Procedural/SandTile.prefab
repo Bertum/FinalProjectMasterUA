@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &3285706065247553438
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343171743340931939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5557103, y: 0, z: 4.5557103}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &343171743340850417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,7 +22,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 116626, guid: 6d2853b9421ab6840a07a97d66fcef8c, type: 3}
       propertyPath: m_Name
-      value: SM_Env_Tile_Sand_01
+      value: SandTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 116626, guid: 6d2853b9421ab6840a07a97d66fcef8c, type: 3}
+      propertyPath: m_TagString
+      value: SandTile
       objectReference: {fileID: 0}
     - target: {fileID: 401274, guid: 6d2853b9421ab6840a07a97d66fcef8c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -57,3 +74,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d2853b9421ab6840a07a97d66fcef8c, type: 3}
+--- !u!1 &343171743340931939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 116626, guid: 6d2853b9421ab6840a07a97d66fcef8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 343171743340850417}
+  m_PrefabAsset: {fileID: 0}

@@ -25,6 +25,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OceanTile
       objectReference: {fileID: 0}
+    - target: {fileID: 110556, guid: a1f656c69d2080948aa8bcd6456962b9, type: 3}
+      propertyPath: m_TagString
+      value: SeaTile
+      objectReference: {fileID: 0}
     - target: {fileID: 2314450, guid: a1f656c69d2080948aa8bcd6456962b9, type: 3}
       propertyPath: m_CastShadows
       value: 0

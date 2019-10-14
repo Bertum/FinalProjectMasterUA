@@ -17,25 +17,34 @@ public class NpcBase : MonoBehaviour {
     public string npcName = "";
     public int level = 0;
     public int jobLevel;
-    public EJobType npcJob;    
+    public EJobType npcJob;
     public int strength = 0;
     public int dexterity = 0;
     public int intelligence = 0;
     public int sight = 0;
     private float maxHealthPoints;
     private float currentHealthPoints;
+    //Team definition
     private bool bPlayerTeam;
+    //Job variable
     private JobClass jobClass;
+    //Combat variables
     private Vector3 startPosition;
     private Vector3 slideTargetPosition;
     private EState state;
-    public Slider healthBarSlider;
     private Action onSlideCompleted;
     private Action onAttackCompleted;
+    //Health Slider
+    public Slider healthBarSlider;
+    //Sickness variable
+    private int sickLevel;
+    private bool bSick;
+    //Loyalty variable
+    private int loyalty;
 
     private void Start() {
         this.jobClass = new JobClass(npcJob, jobLevel);
-        setMaxHP();
+        SetMaxHP();
         state = EState.Idle;
         this.healthBarSlider.value = CalculateHealthBarValue();
     }
@@ -48,7 +57,7 @@ public class NpcBase : MonoBehaviour {
                 break;
             case EState.Sliding:
                 transform.position = Vector3.MoveTowards(transform.position, slideTargetPosition, 5 * Time.deltaTime);
-                if(Vector3.Distance(transform.position,slideTargetPosition) < 1f) {
+                if (Vector3.Distance(transform.position, slideTargetPosition) < 1f) {
                     transform.position = slideTargetPosition;
                     onSlideCompleted();
                 }
@@ -66,8 +75,9 @@ public class NpcBase : MonoBehaviour {
         this.dexterity = npcDexterity;
         this.intelligence = npcIntelligence;
         this.sight = npcSight;
-        setMaxHP();
-        this.healthBarSlider.value = CalculateHealthBarValue();
+        SetMaxHP();
+        //this.healthBarSlider.value = CalculateHealthBarValue();
+        loyalty = UnityEngine.Random.Range(40, 60);
     }
 
     //Constructor for random enemies
@@ -76,7 +86,7 @@ public class NpcBase : MonoBehaviour {
         jobClass = new JobClass(npcJob, npcJobLevel);
         strength = npcStrength;
         dexterity = npcDexterity;
-        setMaxHP();
+        SetMaxHP();
     }
 
     public void SetNewName(string newName) {
@@ -87,7 +97,7 @@ public class NpcBase : MonoBehaviour {
         this.jobClass.SwitchJobClass(newJob);
     }
 
-    private void setMaxHP() {
+    private void SetMaxHP() {
         //TODO - instead of 10, depends on job type.
         switch (jobClass.jobType) {
             case EJobType.Rookie:
@@ -107,8 +117,39 @@ public class NpcBase : MonoBehaviour {
                 break;
             default:
                 break;
-        }        
+        }
         currentHealthPoints = maxHealthPoints;
+    }
+
+    public void IncreaseSicknessLevel(int v) {
+        sickLevel += v;
+    }
+
+    public void DecreaseSicknessLevel(int v) {
+        sickLevel -= v;
+    }
+
+    public int GetSickLevel() {
+        return sickLevel;
+    }
+
+    public void IncreaseLoyalty(int v) {
+        loyalty += v;
+    }
+
+    public void DecreaseLoyalty(int v) {
+        loyalty -= v;
+    }
+
+    public int GetLoyalty() {
+        return loyalty;
+    }
+
+    public void DecreaseStats() {
+        this.strength -= 1;
+        this.dexterity -= 1;
+        this.intelligence -= 1;
+        this.sight -= 1;
     }
 
     public void AttackEnemy(NpcBase defender, Action onAttackCompleted) {
@@ -116,8 +157,8 @@ public class NpcBase : MonoBehaviour {
             //transform.LookAt(defender.transform.position);
             Vector3 slideTargetPosition = defender.transform.position;
             SlideToPosition(slideTargetPosition, () => {
-                state = EState.Busy;                
-                defender.OnDamageReceived(this.AttackDamage());
+                state = EState.Busy;
+                defender.OnDamageReceived(this.AttackDamage() - dexterity / 2);
                 SlideToPosition(startPosition, () => {
                     state = EState.Idle;
                     onAttackCompleted();
@@ -127,7 +168,7 @@ public class NpcBase : MonoBehaviour {
             Vector3 slideTargetPosition = defender.transform.position;
             SlideToPosition(slideTargetPosition, () => {
                 state = EState.Busy;
-                print(this.npcName+" Missed "+defender.npcName+"!");
+                print(this.npcName + " Missed " + defender.npcName + "!");
                 SlideToPosition(startPosition, () => {
                     state = EState.Idle;
                     onAttackCompleted();
@@ -138,7 +179,7 @@ public class NpcBase : MonoBehaviour {
 
     //To use in a battle to hurt enemies
     private int AttackDamage() {
-        return strength + jobClass.jobLevel + UnityEngine.Random.Range(0,strength);
+        return strength + jobClass.jobLevel + UnityEngine.Random.Range(0, strength);
     }
 
     //To use in a battle to avoid damage
@@ -147,8 +188,8 @@ public class NpcBase : MonoBehaviour {
     }
 
     //To use when AttackDamage received > this Evade
-    private void OnDamageReceived(int damage) {
-        this.currentHealthPoints -= (damage-dexterity/2);
+    public void OnDamageReceived(int damage) {
+        this.currentHealthPoints -= damage;
     }
 
     public void GainExperience(int experience) {
@@ -168,7 +209,7 @@ public class NpcBase : MonoBehaviour {
         startPosition = transform.position;
     }
 
-    public float getNpcMaximunHealth() {
+    public float GetNpcMaximunHealth() {
         return this.maxHealthPoints;
     }
 
@@ -176,10 +217,14 @@ public class NpcBase : MonoBehaviour {
         return this.currentHealthPoints;
     }
 
-    private float CalculateHealthBarValue() {
-        return (this.currentHealthPoints/maxHealthPoints);
+    public void Recover() {
+        this.currentHealthPoints = maxHealthPoints;
     }
-         
+
+    private float CalculateHealthBarValue() {
+        return (this.currentHealthPoints / maxHealthPoints);
+    }
+
     private void SlideToPosition(Vector3 position, Action onSlideComplete) {
         this.slideTargetPosition = position;
         this.onSlideCompleted = onSlideComplete;
