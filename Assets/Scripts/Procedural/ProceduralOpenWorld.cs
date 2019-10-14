@@ -15,6 +15,7 @@ public class ProceduralOpenWorld : MonoBehaviour
     private GameObject mapWrapper;
     private GameObject eventsWrapper;
     private GameObject seaPrefab;
+    private GameObject borderPrefab;
     private GameObject sandPrefab;
     private GameObject decorationPrefab;
     private GameObject playerShipPrefab;
@@ -32,6 +33,7 @@ public class ProceduralOpenWorld : MonoBehaviour
         {
             seaWrapper = GameObject.FindGameObjectWithTag("SeaWrapper");
             seaPrefab = Resources.Load("Prefabs/Procedural/OceanTile") as GameObject;
+            borderPrefab = Resources.Load("Prefabs/Procedural/Border") as GameObject;
             loadWater();
 
             bottomWrapper = GameObject.FindGameObjectWithTag("BottomWrapper");
@@ -70,6 +72,42 @@ public class ProceduralOpenWorld : MonoBehaviour
     {
         int fixedOffset = 30;
         int waterWidth = 30;
+        for (int x = 0; x < 50; x ++) {
+            GameObject a = GameObject.Instantiate(borderPrefab, new Vector3((x * waterWidth), SURFACE_Y,0), Quaternion.identity);
+            a.transform.parent = seaWrapper.transform;
+            GameObject b = GameObject.Instantiate(borderPrefab, new Vector3((x * waterWidth), SURFACE_Y, 50 * waterWidth), Quaternion.identity);
+            b.transform.parent = seaWrapper.transform;
+            GameObject c = GameObject.Instantiate(borderPrefab, new Vector3((0 * waterWidth), SURFACE_Y, x * waterWidth), Quaternion.identity);
+            c.transform.parent = seaWrapper.transform;
+            GameObject d = GameObject.Instantiate(borderPrefab, new Vector3((50 * waterWidth), SURFACE_Y, x * waterWidth), Quaternion.identity);
+            d.transform.parent = seaWrapper.transform;
+            playerDataController.PlayerData.MapData.Add(new MapData()
+            {
+                PrefabName = borderPrefab.name,
+                Position = a.transform.position,
+                Rotation = a.transform.rotation
+            });
+            playerDataController.PlayerData.MapData.Add(new MapData()
+            {
+                PrefabName = borderPrefab.name,
+                Position = b.transform.position,
+                Rotation = b.transform.rotation
+            });
+            playerDataController.PlayerData.MapData.Add(new MapData()
+            {
+                PrefabName = borderPrefab.name,
+                Position = c.transform.position,
+                Rotation = c.transform.rotation
+            });
+            playerDataController.PlayerData.MapData.Add(new MapData()
+            {
+                PrefabName = borderPrefab.name,
+                Position = d.transform.position,
+                Rotation = d.transform.rotation
+            });
+
+        }
+       
         for (int x = 0; x < 50; x++)
         {
             for (int z = 0; z < 50; z++)
