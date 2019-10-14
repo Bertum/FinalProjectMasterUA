@@ -45,6 +45,12 @@ public class LanguageController : MonoBehaviour
     public string GetTextById(string id)
     {
         string value;
+
+        if (texts == null)
+        {
+            GetCurrentLanguage();
+        }
+
         if (!texts.TryGetValue(id, out value))
         {
             value = string.Format("Text with id {0} not found", id);
