@@ -12,6 +12,7 @@ TagManager:
   - MapWrapper
   - BottomWrapper
   - Border
+  - EventsWrapper
   layers:
   - Default
   - TransparentFX

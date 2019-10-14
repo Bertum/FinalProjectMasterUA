@@ -23,7 +23,7 @@ public class ShipController : MonoBehaviour {
         domeRenderer = dome.GetComponent<Renderer>();
         domeRenderer.material.mainTextureOffset = new Vector2(offset, 0);
         domeRenderX = domeRenderer.material.mainTextureOffset.x;
-        pDController = GameObject.FindObjectOfType<PlayerDataController>();
+        pDController = FindObjectOfType<PlayerDataController>().GetComponent<PlayerDataController>();
     }
 
 
@@ -38,7 +38,7 @@ public class ShipController : MonoBehaviour {
             new NpcBase("Jorgito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5)),
             new NpcBase("Jaimito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5))};
         playerCrew = new List<NpcBase>(crew);
-        pDController.PlayerData.CurrentCrew = playerCrew;        
+        //pDController.PlayerData.CurrentCrew = playerCrew;        
     }
 
     public void SetInitialResources() {
