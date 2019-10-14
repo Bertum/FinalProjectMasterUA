@@ -22,6 +22,7 @@ public class PlayerDataController : MonoBehaviour
         var playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         PlayerData.Position = playerTransform.position;
         PlayerData.Rotation = playerTransform.rotation;
+        
         saveLoadService.Save(PlayerData);
     }
 }

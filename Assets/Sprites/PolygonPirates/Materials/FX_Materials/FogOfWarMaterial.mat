@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FogOfWarMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: eee51dbf22748034bbd6f33740b743fd,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_AD530087:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_45D69EC6_Texture:
+        m_Texture: {fileID: 2800000, guid: 5a22e3e1c0762bf45978b0a3b080cfaf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_1F3BD85: 0.5
+    - Vector1_23B499B7: 1
+    - Vector1_260ABFD0: 0.5
+    - Vector1_335B960F: 0.5
+    - Vector1_3F6A430D: 1
+    - Vector1_4195A0E2: 0.8
+    - Vector1_51E83B01: 1
+    - Vector1_5BAA8B43: 0
+    - Vector1_60AB63DD: 50
+    - Vector1_60D453D4: 0
+    - Vector1_6673E19A: 1
+    - Vector1_71546C8A: 0.2
+    - Vector1_78C7B4A3: 0
+    - Vector1_7AE006FB: 1
+    - Vector1_7BE6BE68: 1
+    - Vector1_7C9373E3: 1
+    - Vector1_7D95AC4A: 5
+    - Vector1_8016D40B: 20
+    - Vector1_80E8C15B: 0
+    - Vector1_8C6AAEB9: 0.5
+    - Vector1_8D77D7AB: 0.25
+    - Vector1_97795E3: 0.8
+    - Vector1_98CC0D62: 1
+    - Vector1_A41B4B1D: 1
+    - Vector1_A8D627D0: 0.25
+    - Vector1_BF5A0A76: 0.2
+    - Vector1_C42BE294: 0
+    - Vector1_CA00AE4C: 0.5
+    - Vector1_CA4D1E00: 1
+    - Vector1_E44CFDD8: 1
+    - Vector1_E8E6F28C: 0.5
+    - Vector1_EE83540: 0
+    - Vector1_FDE1159F: 2
+    - Vector1_FF31C6AB: 0.5
+    m_Colors:
+    - Vector2_3DFBF975: {r: 0, g: 1, b: 0, a: 0}
+    - Vector2_9E4A846A: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - Vector4_27C9F27F: {r: 0, g: 0, b: 205, a: 0}
+    - Vector4_323D64FF: {r: 255, g: 255, b: 255, a: 0}
+    - Vector4_73F9703D: {r: 0, g: 0, b: 255, a: 0}
+    - Vector4_FC5C6F94: {r: 0, g: 191, b: 255, a: 0}
