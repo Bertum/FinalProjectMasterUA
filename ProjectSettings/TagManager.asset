@@ -4,17 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ocean
   - Sky
-  - SeaWrapper
-  - BottomWrapper
-  - MapWrapper
-  - PlayerLocations
-  - EnemyLocations
-  - EventsWrapper
   - SeaTile
-  - SandTile
   - SandDecorations
+  - SandTile
+  - SeaWrapper
+  - MapWrapper
+  - BottomWrapper
+  - Border
   layers:
   - Default
   - TransparentFX
