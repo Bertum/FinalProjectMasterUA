@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static Constants;
 
 public class RecruitmentController : MonoBehaviour
 {
@@ -11,37 +10,31 @@ public class RecruitmentController : MonoBehaviour
 
     void Awake()
     {
-        playerDataController = GameObject.FindObjectOfType<PlayerDataController>();
+        playerDataController = FindObjectOfType<PlayerDataController>();
     }
 
-    private void Start()
+    public void Buy(NpcBase npc)
     {
-        var list = new List<EJobType>() { EJobType.Carpenter, EJobType.Cook };
-        CreateList(list);
+        //playerDataController.PlayerData
     }
 
-
-
-    public void Buy(EJobType type)
+    public void CreateList(List<NpcBase> npcs)
     {
-        Debug.Log(type.ToString());
-    }
-
-    public void CreateList(List<EJobType> jobs)
-    {
-        foreach (var job in jobs)
+        foreach (var npc in npcs)
         {
             var shopItem = Instantiate(npcToRecruit, shopList.transform);
-            var jobText = LanguageController.instance.GetTextById(string.Format("job.{0}", job.ToString().ToLower()));
+            var jobText = LanguageController.instance.GetTextById(string.Format("job.{0}", npc.npcJob.ToString().ToLower()));
             shopItem.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = jobText;
             //Stregnth
-            shopItem.transform.GetChild(0).GetChild(2).GetChild(1).GetComponent<Text>().text = "1";
+            shopItem.transform.GetChild(0).GetChild(2).GetChild(1).GetComponent<Text>().text = npc.strength.ToString();
             //Dexterity
-            shopItem.transform.GetChild(0).GetChild(2).GetChild(3).GetComponent<Text>().text = "2";
+            shopItem.transform.GetChild(0).GetChild(2).GetChild(3).GetComponent<Text>().text = npc.dexterity.ToString();
             //Intelligence
-            shopItem.transform.GetChild(0).GetChild(2).GetChild(5).GetComponent<Text>().text = "3";
+            shopItem.transform.GetChild(0).GetChild(2).GetChild(5).GetComponent<Text>().text = npc.intelligence.ToString();
             //Button
-            shopItem.transform.GetChild(0).GetChild(3).GetComponent<Button>().onClick.AddListener(delegate { Buy(job); });
+            shopItem.transform.GetChild(0).GetChild(3).GetComponent<Button>().onClick.AddListener(delegate { Buy(npc); });
+            //Cost Amount
+            shopItem.transform.GetChild(0).GetChild(5).GetComponent<Text>().text = string.Format("{0}$", npc.cost.ToString());
         }
     }
 }

@@ -22,5 +22,6 @@
   "job.pilot": "Pilot",
   "job.medic": "Medic",
   "job.carpenter": "Carpenter",
-  "menu.buy": "Buy"
+  "menu.buy": "Buy",
+  "shop.cost": "Cost:"
 }
