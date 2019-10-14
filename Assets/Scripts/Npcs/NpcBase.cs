@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static Constants;
+[System.Serializable]
 
 public class NpcBase : MonoBehaviour {
 
