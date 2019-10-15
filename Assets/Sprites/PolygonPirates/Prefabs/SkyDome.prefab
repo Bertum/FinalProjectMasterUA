@@ -304,8 +304,6 @@ GameObject:
   - component: {fileID: 400010}
   - component: {fileID: 3300006}
   - component: {fileID: 2300006}
-  - component: {fileID: 1573866030114489132}
-  - component: {fileID: 251152805}
   m_Layer: 0
   m_Name: SkyDome
   m_TagString: Sky
@@ -375,28 +373,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1573866030114489132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee8b8f4ebf5e2cd419212beb40f6bcb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!135 &251152805
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100010}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 75
-  m_Center: {x: 0, y: 13.064241, z: 0}

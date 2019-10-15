@@ -4,15 +4,16 @@ public class MouseController : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        //TODO: find another way to get the camera
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 1000))
-            {
-                Debug.Log(hit.transform.gameObject.name);
-            }
-        }
+        //    if (Physics.Raycast(ray, out hit, 1000))
+        //    {
+        //        Debug.Log(hit.transform.gameObject.name);
+        //    }
+        //}
     }
 }

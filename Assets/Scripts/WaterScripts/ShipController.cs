@@ -123,13 +123,13 @@ public class ShipController : MonoBehaviour
     //Main function for the actions that happens while navigating in your crew
     private void CrewControl()
     {
-        foreach (NpcBase crewMember in playerCrew)
+        for (int i = pDController.PlayerData.CurrentCrew.Count - 1; i >= 0; i--)
         {
-            ConsumeFood(crewMember);
-            ConsumeWater(crewMember);
-            HealSickness(crewMember);
-            Sickness(crewMember);
-            HealInjuries(crewMember);
+            ConsumeFood(pDController.PlayerData.CurrentCrew[i]);
+            ConsumeWater(pDController.PlayerData.CurrentCrew[i]);
+            HealSickness(pDController.PlayerData.CurrentCrew[i]);
+            HealInjuries(pDController.PlayerData.CurrentCrew[i]);
+            Sickness(pDController.PlayerData.CurrentCrew[i]);
         }
     }
 
