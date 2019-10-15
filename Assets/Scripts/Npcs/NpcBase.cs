@@ -23,7 +23,7 @@ public class NpcBase : MonoBehaviour
     public int dexterity = 0;
     public int intelligence = 0;
     public int sight = 0;
-    public decimal cost;
+    public int cost;
     private float maxHealthPoints;
     private float currentHealthPoints;
     //Team definition

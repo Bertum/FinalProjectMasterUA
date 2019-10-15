@@ -7,15 +7,11 @@ TagManager:
   - Sky
   - SeaTile
   - SandDecorations
-  - SandTile
   - SeaWrapper
   - MapWrapper
   - BottomWrapper
   - Border
   - EventsWrapper
-  - SeaTile
-  - SandTile
-  - SandDecorations
   layers:
   - Default
   - TransparentFX

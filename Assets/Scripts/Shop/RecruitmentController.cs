@@ -13,9 +13,14 @@ public class RecruitmentController : MonoBehaviour
         playerDataController = FindObjectOfType<PlayerDataController>();
     }
 
-    public void Buy(NpcBase npc)
+    public void Buy(NpcBase npc, GameObject shopItem)
     {
-        //playerDataController.PlayerData
+        if (npc.cost <= playerDataController.PlayerData.CurrentGold)
+        {
+            playerDataController.PlayerData.CurrentGold -= npc.cost;
+            playerDataController.PlayerData.CurrentCrew.Add(npc);
+            shopItem.SetActive(false);
+        }
     }
 
     public void CreateList(List<NpcBase> npcs)
@@ -32,7 +37,7 @@ public class RecruitmentController : MonoBehaviour
             //Intelligence
             shopItem.transform.GetChild(0).GetChild(2).GetChild(5).GetComponent<Text>().text = npc.intelligence.ToString();
             //Button
-            shopItem.transform.GetChild(0).GetChild(3).GetComponent<Button>().onClick.AddListener(delegate { Buy(npc); });
+            shopItem.transform.GetChild(0).GetChild(3).GetComponent<Button>().onClick.AddListener(delegate { Buy(npc, shopItem); });
             //Cost Amount
             shopItem.transform.GetChild(0).GetChild(5).GetComponent<Text>().text = string.Format("{0}$", npc.cost.ToString());
         }

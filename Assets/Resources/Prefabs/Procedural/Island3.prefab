@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9176053540605395235}
+  - component: {fileID: 278880058833440061}
   m_Layer: 0
   m_Name: Island3
   m_TagString: Island
@@ -86,6 +87,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &278880058833440061
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4728453695477628734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &277889677379841368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,6 +257,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9176053540605395235}
     m_Modifications:
+    - target: {fileID: 150696, guid: cfe5d370eb7adbd43bead7f2e91204b1, type: 3}
+      propertyPath: m_Name
+      value: SM_Env_Rocks_02 (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 456230, guid: cfe5d370eb7adbd43bead7f2e91204b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.753359
@@ -298,10 +316,6 @@ PrefabInstance:
     - target: {fileID: 456230, guid: cfe5d370eb7adbd43bead7f2e91204b1, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 150696, guid: cfe5d370eb7adbd43bead7f2e91204b1, type: 3}
-      propertyPath: m_Name
-      value: SM_Env_Rocks_02 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2375946, guid: cfe5d370eb7adbd43bead7f2e91204b1, type: 3}
       propertyPath: m_CastShadows
