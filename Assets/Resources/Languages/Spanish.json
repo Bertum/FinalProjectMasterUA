@@ -7,9 +7,21 @@
   "menu.newGame": "Nueva Partida",
   "menu.exit": "Salir",
   "menu.creditsHeader": "Créditos:",
-  "menu.credits": "Programación: \n Alberto Delgado Cruzado \n  Miguel Agudo Ballesteros \n  Óscar Sánchez Fernández \n Gráficos: \n JoannaVu - Black Pearl Font \n Kenney - UI Assets \n Synty Studios - Pirates Pack",
+  "menu.credits": "Programación: \n Alberto Delgado Cruzado \n Miguel Agudo Ballesteros \n Óscar Sánchez Fernández \n Gráficos: \n JoannaVu - Black Pearl Font \n Kenney - UI Assets \n Synty Studios - Pirates Pack",
   "loading.loading": "Cargando",
   "tip.test": "Consejo de prueba",
   "menu.gamePaused": "Pausado",
-  "menu.mainMenu": "Menú Principal"
+  "menu.mainMenu": "Menú Principal",
+  "stats.strength": "Fuerza",
+  "stats.dexterity": "Destreza",
+  "stats.intelligence": "Inteligencia",
+  "job.rookie": "Novato",
+  "job.official": "Oficial",
+  "job.cook": "Cocinero",
+  "job.searcher": "Explorador",
+  "job.pilot": "Piloto",
+  "job.medic": "Medico",
+  "job.carpenter": "Carpintero",
+  "menu.buy": "Comprar",
+  "shop.cost": "Coste:"
 }
