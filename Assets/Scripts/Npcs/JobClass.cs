@@ -1,35 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using static Constants;
 
-public class JobClass : ScriptableObject {
+public class JobClass : ScriptableObject
+{
     public EJobType jobType = 0;
     public int jobLevel = 1;
     private int jobExperience;
 
-    public JobClass(EJobType jobType, int jobLevel) {
+    public JobClass(EJobType jobType, int jobLevel)
+    {
         this.jobType = jobType;
         this.jobLevel = jobLevel;
         this.jobExperience = 0;
     }
 
-    public void IncreaseJobExperience(int experience) {
+    public void IncreaseJobExperience(int experience)
+    {
         jobExperience += experience;
         checkForLevelUp();
     }
 
-    public void SwitchJobClass(EJobType newJob) {
+    public void SwitchJobClass(EJobType newJob)
+    {
         jobType = newJob;
         jobLevel = 0;
         jobExperience = 0;
     }
 
     //Job Level update each 20 exp + level*25 except rookie
-    public void checkForLevelUp() {
-        switch (jobType) {
+    public void checkForLevelUp()
+    {
+        switch (jobType)
+        {
             case EJobType.Rookie:
-                if((jobExperience/20) % jobLevel > jobLevel) {
+                if ((jobExperience / 20) % jobLevel > jobLevel)
+                {
                     jobLevel++;
                     //TODO LevelUp
                     //Esto igual debería ir en la clase Npc?
@@ -37,7 +42,8 @@ public class JobClass : ScriptableObject {
                 }
                 break;
             default:
-                if (((jobExperience / 20) + (25 * jobLevel)) % jobLevel > jobLevel) {
+                if (((jobExperience / 20) + (25 * jobLevel)) % jobLevel > jobLevel)
+                {
                     //TODO LevelUp
                     jobLevel++;
                 }

@@ -13,7 +13,17 @@ public class RecruitmentController : MonoBehaviour
         playerDataController = FindObjectOfType<PlayerDataController>();
     }
 
-    public void Buy(NpcBase npc, GameObject shopItem)
+    private void Start()
+    {
+        List<NpcStats> npcs = new List<NpcStats>();
+        for (int i = 0; i < 6; i++)
+        {
+            npcs.Add(new NpcStats(1, 2));
+        }
+        CreateList(npcs);
+    }
+
+    public void Buy(NpcStats npc, GameObject shopItem)
     {
         if (npc.cost <= playerDataController.PlayerData.CurrentGold)
         {
@@ -23,7 +33,7 @@ public class RecruitmentController : MonoBehaviour
         }
     }
 
-    public void CreateList(List<NpcBase> npcs)
+    public void CreateList(List<NpcStats> npcs)
     {
         foreach (var npc in npcs)
         {

@@ -15,7 +15,7 @@ public class ShipController : MonoBehaviour
     float steerFactor;
     Rigidbody rigidBody;
     private Renderer domeRenderer;
-    List<NpcBase> playerCrew = new List<NpcBase>();
+    List<NpcStats> playerCrew = new List<NpcStats>();
     List<ShipResources> resources = new List<ShipResources>();
     PlayerDataController pDController;
 
@@ -38,12 +38,12 @@ public class ShipController : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey(Constants.NEWGAME) || PlayerPrefs.GetInt(Constants.NEWGAME) == 1)
         {
-            NpcBase[] crew = {
-            new NpcBase("Smith", 2, Constants.EJobType.Official, 0, UnityEngine.Random.Range(4,6), UnityEngine.Random.Range(4, 6), UnityEngine.Random.Range(4, 6), UnityEngine.Random.Range(4, 6)),
-            new NpcBase("Juanito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3,5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5)),
-            new NpcBase("Jorgito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5)),
-            new NpcBase("Jaimito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5))};
-            playerCrew = new List<NpcBase>(crew);
+            NpcStats[] crew = {
+            new NpcStats("Smith", 2, Constants.EJobType.Official, 0, UnityEngine.Random.Range(4,6), UnityEngine.Random.Range(4, 6), UnityEngine.Random.Range(4, 6), UnityEngine.Random.Range(4, 6)),
+            new NpcStats("Juanito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3,5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5)),
+            new NpcStats("Jorgito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5)),
+            new NpcStats("Jaimito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5))};
+            playerCrew = new List<NpcStats>(crew);
             pDController.PlayerData.CurrentCrew = playerCrew;
         }
     }
@@ -133,7 +133,7 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    private void ConsumeFood(NpcBase crewMember)
+    private void ConsumeFood(NpcStats crewMember)
     {
         //TODO: Each npc eats 3 meals per day, if not, sick level increases.
         if (resources[1].Consume(1))
@@ -142,7 +142,7 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    private void ConsumeWater(NpcBase crewMember)
+    private void ConsumeWater(NpcStats crewMember)
     {
         //TODO: Each npc drinks 3 waters per day, if not, sick level increases.        
         if (resources[1].Consume(1))
@@ -151,24 +151,21 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    private void HealSickness(NpcBase crewMember)
+    private void HealSickness(NpcStats crewMember)
     {
         //TODO: If medic in crew AND it has medicines, sick level of all decreasesx2. If not decreases.
         //If medic is sick, shit happens
-        NpcBase medic = CheckForMedic();
-        if (medic)
+        NpcStats medic = CheckForMedic();
+        if (medic != null && medic.GetSickLevel() < 10 && resources[3].quantity > 0)
         {
-            if (medic.GetSickLevel() < 10 && resources[3].quantity > 0)
+            if (resources[3].Consume(1))
             {
-                if (resources[3].Consume(1))
-                {
-                    crewMember.DecreaseSicknessLevel(2);
-                }
+                crewMember.DecreaseSicknessLevel(2);
             }
         }
     }
 
-    private void HealInjuries(NpcBase crewMember)
+    private void HealInjuries(NpcStats crewMember)
     {
         if (crewMember.GetSickLevel() < 10 && crewMember.GetNpcCurrentHealth() < crewMember.GetNpcMaximunHealth())
         {
@@ -176,9 +173,9 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    private NpcBase CheckForMedic()
+    private NpcStats CheckForMedic()
     {
-        foreach (NpcBase npc in playerCrew)
+        foreach (NpcStats npc in playerCrew)
         {
             if (npc.npcJob == EJobType.Medic)
             {
@@ -188,7 +185,7 @@ public class ShipController : MonoBehaviour
         return null;
     }
 
-    private void Sickness(NpcBase crewMember)
+    private void Sickness(NpcStats crewMember)
     {
         //TODO: If sickLevel of npc > 10, health is lost.
         //TODO: If sickLevel of npc > 20, attributes and health are lost.
@@ -219,7 +216,7 @@ public class ShipController : MonoBehaviour
         //TODO: Loyalty of an npc -sickLevel
         //TODO: If overall loyalty < 50 AND , YOU DIED
         int globalLoyalty = 0;
-        foreach (NpcBase crewMember in playerCrew)
+        foreach (NpcStats crewMember in playerCrew)
         {
             crewMember.DecreaseLoyalty(crewMember.GetSickLevel());
             globalLoyalty += crewMember.GetLoyalty();
