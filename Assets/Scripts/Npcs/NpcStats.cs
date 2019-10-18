@@ -70,6 +70,12 @@ public class NpcStats
             case EJobType.Searcher:
                 maxHealthPoints = 10 + strength + jobClass.jobLevel;
                 break;
+            case EJobType.Medic:
+                maxHealthPoints = 5 + strength + jobClass.jobLevel;
+                break;
+            case EJobType.Carpenter:
+                maxHealthPoints = 10 + strength + jobClass.jobLevel;
+                break;
             default:
                 break;
         }
