@@ -3,12 +3,16 @@ using static Constants;
 
 public class JobClass : ScriptableObject
 {
-    public EJobType jobType = 0;
-    public int jobLevel = 1;
+    public EJobType jobType;
+    public int jobLevel;
     private int jobExperience;
 
     public JobClass(EJobType jobType, int jobLevel)
     {
+        if (jobLevel <= 0)
+        {
+            jobLevel = 1;
+        }
         this.jobType = jobType;
         this.jobLevel = jobLevel;
         this.jobExperience = 0;

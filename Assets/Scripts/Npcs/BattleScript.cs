@@ -13,8 +13,8 @@ public class BattleScript : MonoBehaviour
         EndTurn
     }
 
-    public List<NpcBase> goodBois = new List<NpcBase>();
-    public List<NpcBase> badBois = new List<NpcBase>();
+    private List<NpcBase> goodBois = new List<NpcBase>();
+    private List<NpcBase> badBois = new List<NpcBase>();
     private int turn;
     private List<NpcBase> orderList = new List<NpcBase>();
     private List<NpcBase> playerTeam = new List<NpcBase>();
@@ -23,26 +23,42 @@ public class BattleScript : MonoBehaviour
     private List<NpcBase> enemyTeamTurn = new List<NpcBase>();
     private EBattleStatus battleStatus;
     private int combatant;
+    private PlayerDataController playerDataController;
+    private GameObject characterPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        /*for (int i = 0; i < 5; i++) {
-            goodBois.Add(new NpcBase(UnityEngine.Random.Range(0, 3), EJobType.Rookie, UnityEngine.Random.Range(0, 5), UnityEngine.Random.Range(0, 6), UnityEngine.Random.Range(0, 6)));
-            goodBois[i].SetPlayerTeam(true);
-            baddies.Add(new NpcBase(UnityEngine.Random.Range(0, 3), EJobType.Rookie, UnityEngine.Random.Range(0, 5), UnityEngine.Random.Range(0, 6), UnityEngine.Random.Range(0, 6)));
-            baddies[i].SetPlayerTeam(false);
-        }*/
+        characterPrefab = (GameObject)Resources.Load("Prefabs/Characters/RandomCharacter");
+        playerDataController = GameObject.FindObjectOfType<PlayerDataController>();
+        playerDataController.PlayerData.CurrentCrew = new List<NpcStats>();
+        for (int i = 0; i < 5; i++)
+        {
+            var newStat = new NpcStats(3, 5);
+            playerDataController.PlayerData.CurrentCrew.Add(newStat);
+        }
         GameObject playerLocations = GameObject.FindGameObjectWithTag("PlayerLocations");
         GameObject enemyLocations = GameObject.FindGameObjectWithTag("EnemyLocations");
-        for (int i = 0; i < goodBois.Count; i++)
+        var numOfCharacters = playerDataController.PlayerData.CurrentCrew.Count >= 5 ? 5 : playerDataController.PlayerData.CurrentCrew.Count;
+        for (int i = 0; i < numOfCharacters; i++)
         {
-            goodBois[i].SetPlayerTeam(true);
-            goodBois[i].SetStartPosition(playerLocations.transform.GetChild(i).transform.position);
+            var newPlayer = Instantiate(characterPrefab);
+            var newNpcBase = newPlayer.GetComponent<NpcBase>();
+            newNpcBase.stats = playerDataController.PlayerData.CurrentCrew[i];
+            newNpcBase.SetPlayerTeam(true);
+            newNpcBase.SetStartPosition(playerLocations.transform.GetChild(i).transform.position);
+            goodBois.Add(newNpcBase);
         }
-        for (int i = 0; i < badBois.Count; i++)
+        //TODO change num by parameter
+        for (int i = 0; i < numOfCharacters; i++)
         {
-            badBois[i].SetStartPosition(enemyLocations.transform.GetChild(i).transform.position);
+            var newPlayer = Instantiate(characterPrefab);
+            var newNpcBase = newPlayer.GetComponent<NpcBase>();
+            //TODO change level by parametes
+            newNpcBase.stats = new NpcStats(1, 2);
+            newNpcBase.SetPlayerTeam(false);
+            newNpcBase.SetStartPosition(enemyLocations.transform.GetChild(i).transform.position);
+            goodBois.Add(newNpcBase);
         }
         turn = 0;
         PrepareBattle();

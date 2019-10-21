@@ -28,6 +28,7 @@ public class NpcBase : MonoBehaviour
 
     private void Start()
     {
+        this.stats = new NpcStats(0, 0);
         this.stats.jobClass = new JobClass(stats.npcJob, stats.jobLevel);
         stats.SetMaxHP();
         state = EState.Idle;

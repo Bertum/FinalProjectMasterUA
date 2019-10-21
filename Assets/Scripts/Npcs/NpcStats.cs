@@ -39,6 +39,10 @@ public class NpcStats
     //Constructor for random enemies
     public NpcStats(int minLevel, int maxLevel)
     {
+        if (minLevel <= 0)
+        {
+            minLevel = 1;
+        }
         level = UnityEngine.Random.Range(minLevel, maxLevel);
         npcJob = (EJobType)UnityEngine.Random.Range(0, 7);
         jobClass = new JobClass(npcJob, level);
