@@ -6,21 +6,13 @@ public class RecruitmentController : MonoBehaviour
 {
     public GameObject npcToRecruit;
     public GameObject shopList;
+    public GameObject shopCanvas;
     private PlayerDataController playerDataController;
 
     void Awake()
     {
         playerDataController = FindObjectOfType<PlayerDataController>();
-    }
-
-    private void Start()
-    {
-        List<NpcStats> npcs = new List<NpcStats>();
-        for (int i = 0; i < 6; i++)
-        {
-            npcs.Add(new NpcStats(1, 2));
-        }
-        CreateList(npcs);
+        shopCanvas.SetActive(false);
     }
 
     public void Buy(NpcStats npc, GameObject shopItem)
@@ -51,5 +43,21 @@ public class RecruitmentController : MonoBehaviour
             //Cost Amount
             shopItem.transform.GetChild(0).GetChild(5).GetComponent<Text>().text = string.Format("{0}$", npc.cost.ToString());
         }
+    }
+
+    public void OpenShop(int islandLevel)
+    {
+        List<NpcStats> npcs = new List<NpcStats>();
+        for (int i = 0; i < 6; i++)
+        {
+            npcs.Add(new NpcStats(1, islandLevel));
+        }
+        CreateList(npcs);
+        shopCanvas.SetActive(true);
+    }
+
+    public void CloseShop()
+    {
+        shopCanvas.SetActive(false);
     }
 }
