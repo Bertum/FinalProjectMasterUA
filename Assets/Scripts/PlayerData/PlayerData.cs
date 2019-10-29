@@ -15,5 +15,5 @@ public class PlayerData
     public int TotalPirates;
     public int TotalGold;
     public List<MapData> MapData = new List<MapData>();
-    public List<NpcBase> CurrentCrew = new List<NpcBase>();
+    public List<NpcStats> CurrentCrew = new List<NpcStats>();
 }
