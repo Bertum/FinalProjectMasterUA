@@ -15,7 +15,10 @@ public class ProceduralOpenWorld : MonoBehaviour
     private GameObject mapWrapper;
     private GameObject eventsWrapper;
     private GameObject seaPrefab;
-    private GameObject borderPrefab;
+    private GameObject borderPrefab1;
+    private GameObject borderPrefab2;
+    private GameObject borderPrefab3;
+    private GameObject borderPrefab4;
     private GameObject sandPrefab;
     private GameObject decorationPrefab;
     private GameObject playerShipPrefab;
@@ -33,7 +36,10 @@ public class ProceduralOpenWorld : MonoBehaviour
         {
             seaWrapper = GameObject.FindGameObjectWithTag("SeaWrapper");
             seaPrefab = Resources.Load("Prefabs/Procedural/OceanTile") as GameObject;
-            borderPrefab = Resources.Load("Prefabs/Procedural/Border") as GameObject;
+            borderPrefab1 = Resources.Load("Prefabs/Procedural/Border1") as GameObject;
+            borderPrefab2 = Resources.Load("Prefabs/Procedural/Border2") as GameObject;
+            borderPrefab3 = Resources.Load("Prefabs/Procedural/Border3") as GameObject;
+            borderPrefab4 = Resources.Load("Prefabs/Procedural/Border4") as GameObject;
             loadWater();
 
             bottomWrapper = GameObject.FindGameObjectWithTag("BottomWrapper");
@@ -76,8 +82,25 @@ public class ProceduralOpenWorld : MonoBehaviour
     {
         int fixedOffset = 30;
         int waterWidth = 30;
-        for (int x = 0; x < 50; x++)
-        {
+        GameObject borderPrefab;
+        for (int x = 0; x < 50; x++) {
+            switch (UnityEngine.Random.Range(1, 10)) {
+                case 1:
+                    borderPrefab = borderPrefab1;
+                    break;
+                case 2:
+                    borderPrefab = borderPrefab2;
+                    break;
+                case 3:
+                    borderPrefab = borderPrefab3;
+                    break;
+                case 4:
+                    borderPrefab = borderPrefab4;
+                    break;
+                default:
+                    borderPrefab = borderPrefab3;
+                    break;
+            }
             GameObject a = GameObject.Instantiate(borderPrefab, new Vector3((x * waterWidth), SURFACE_Y, 0), Quaternion.identity);
             a.transform.parent = seaWrapper.transform;
             GameObject b = GameObject.Instantiate(borderPrefab, new Vector3((x * waterWidth), SURFACE_Y, 50 * waterWidth), Quaternion.identity);
@@ -144,7 +167,7 @@ public class ProceduralOpenWorld : MonoBehaviour
                     Position = tile.transform.position,
                     Rotation = tile.transform.rotation
                 });
-                if (UnityEngine.Random.Range(1, 25) == 1)
+                if (UnityEngine.Random.Range(1, 30) == 1)
                 {
                     GameObject decoration = GameObject.Instantiate(decorationPrefab, new Vector3(x * sandWidth, BOTTOM_Y, z * sandWidth), Quaternion.identity);
                     decoration.transform.parent = bottomWrapper.transform;
@@ -222,5 +245,4 @@ public class ProceduralOpenWorld : MonoBehaviour
         }
         return result;
     }
-
 }
