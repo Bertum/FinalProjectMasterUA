@@ -7,6 +7,8 @@ public class DomeController : MonoBehaviour
         var seaTiles = GameObject.FindGameObjectsWithTag("SeaTile");
         var sandTiles = GameObject.FindGameObjectsWithTag("SandTile");
         var sandDecorations = GameObject.FindGameObjectsWithTag("SandDecorations");
+        var borders = GameObject.FindGameObjectsWithTag("Border");
+        var islands = GameObject.FindGameObjectsWithTag("Island");
         foreach (var tile in seaTiles)
         {
             tile.GetComponent<MeshRenderer>().enabled = false;
@@ -23,18 +25,56 @@ public class DomeController : MonoBehaviour
                 render.enabled = false;
             }
         }
+        foreach (var tile in borders)
+        {
+            var renderers = tile.GetComponentsInChildren<MeshRenderer>();
+            foreach (var render in renderers)
+            {
+                render.enabled = false;
+            }
+        }
+        foreach (var tile in islands)
+        {
+            var renderers = tile.GetComponentsInChildren<MeshRenderer>();
+            foreach (var render in renderers)
+            {
+                render.enabled = false;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (other.tag)
+        EnableRender(other.gameObject);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        DisableRender(other.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        EnableRender(collision.gameObject);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        DisableRender(collision.gameObject);
+    }
+
+    private void EnableRender(GameObject obj)
+    {
+        switch (obj.tag)
         {
             case "SeaTile":
             case "SandTile":
-                other.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                obj.gameObject.GetComponent<MeshRenderer>().enabled = true;
                 break;
             case "SandDecorations":
-                var renderers = other.GetComponentsInChildren<MeshRenderer>();
+            case "Border":
+            case "Island":
+                var renderers = obj.GetComponentsInChildren<MeshRenderer>();
                 foreach (var render in renderers)
                 {
                     render.enabled = true;
@@ -45,16 +85,18 @@ public class DomeController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void DisableRender(GameObject obj)
     {
-        switch (other.tag)
+        switch (obj.tag)
         {
             case "SeaTile":
             case "SandTile":
-                other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                obj.gameObject.GetComponent<MeshRenderer>().enabled = false;
                 break;
             case "SandDecorations":
-                var renderers = other.GetComponentsInChildren<MeshRenderer>();
+            case "Border":
+            case "Island":
+                var renderers = obj.GetComponentsInChildren<MeshRenderer>();
                 foreach (var render in renderers)
                 {
                     render.enabled = false;

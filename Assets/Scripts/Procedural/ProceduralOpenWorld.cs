@@ -29,7 +29,7 @@ public class ProceduralOpenWorld : MonoBehaviour
     {
         saveLoadService = new SaveLoadService();
         playerDataController = FindObjectOfType<PlayerDataController>().GetComponent<PlayerDataController>();
-        if (true || !PlayerPrefs.HasKey(Constants.NEWGAME) || PlayerPrefs.GetInt(Constants.NEWGAME) == 1)
+        if (!PlayerPrefs.HasKey(Constants.NEWGAME) || PlayerPrefs.GetInt(Constants.NEWGAME) == 1)
         {
             seaWrapper = GameObject.FindGameObjectWithTag("SeaWrapper");
             seaPrefab = Resources.Load("Prefabs/Procedural/OceanTile") as GameObject;
@@ -52,13 +52,17 @@ public class ProceduralOpenWorld : MonoBehaviour
             loadPlayerShipPrefab();
 
             eventsWrapper = GameObject.FindGameObjectWithTag("EventsWrapper");
-            //PlayerPrefs.SetInt(Constants.NEWGAME, 0);
             playerDataController.Save();
         }
         else
         {
             playerDataController.Load();
         }
+    }
+
+    private void Start()
+    {
+        PlayerPrefs.SetInt(Constants.NEWGAME, 0);
     }
 
     // Update is called once per frame
@@ -72,8 +76,9 @@ public class ProceduralOpenWorld : MonoBehaviour
     {
         int fixedOffset = 30;
         int waterWidth = 30;
-        for (int x = 0; x < 50; x ++) {
-            GameObject a = GameObject.Instantiate(borderPrefab, new Vector3((x * waterWidth), SURFACE_Y,0), Quaternion.identity);
+        for (int x = 0; x < 50; x++)
+        {
+            GameObject a = GameObject.Instantiate(borderPrefab, new Vector3((x * waterWidth), SURFACE_Y, 0), Quaternion.identity);
             a.transform.parent = seaWrapper.transform;
             GameObject b = GameObject.Instantiate(borderPrefab, new Vector3((x * waterWidth), SURFACE_Y, 50 * waterWidth), Quaternion.identity);
             b.transform.parent = seaWrapper.transform;
@@ -107,7 +112,7 @@ public class ProceduralOpenWorld : MonoBehaviour
             });
 
         }
-       
+
         for (int x = 0; x < 50; x++)
         {
             for (int z = 0; z < 50; z++)

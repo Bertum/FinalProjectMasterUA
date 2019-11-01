@@ -48,6 +48,7 @@ public class SaveLoadService
         var island2Prefab = Resources.Load("Prefabs/Procedural/Island2") as GameObject;
         var island3Prefab = Resources.Load("Prefabs/Procedural/Island1") as GameObject;
         var playerShipPrefab = Resources.Load("Prefabs/Procedural/PlayerShip") as GameObject;
+        var borderPrefab = Resources.Load("Prefabs/Procedural/Border") as GameObject;
         prefabsToLoad.Add("OceanTile", seaPrefab);
         prefabsToLoad.Add("SandTile", sandPrefab);
         prefabsToLoad.Add("BottomDecoration1", decorationPrefab);
@@ -55,5 +56,6 @@ public class SaveLoadService
         prefabsToLoad.Add("Island2", island2Prefab);
         prefabsToLoad.Add("Island3", island3Prefab);
         prefabsToLoad.Add("PlayerShip", playerShipPrefab);
+        prefabsToLoad.Add("Border", borderPrefab);
     }
 }
