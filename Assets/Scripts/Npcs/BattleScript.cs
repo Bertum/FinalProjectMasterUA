@@ -135,6 +135,7 @@ public class BattleScript : MonoBehaviour {
                 defender = playerList[position];
                 fighter.AttackEnemy(defender, () => {
                     if (defender.GetNpcCurrentHealth() <= 0) {
+                        defender.GetAnimator().SetBool("isDead", true);
                         playerList.Remove(defender);
                     }
                     NextCombatant();
