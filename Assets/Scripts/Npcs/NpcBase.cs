@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-using static Constants;
 [System.Serializable]
 
 public class NpcBase : MonoBehaviour {
@@ -13,22 +12,9 @@ public class NpcBase : MonoBehaviour {
         Attacking
     }
 
-    //Attributes definition.
-    public string npcName = "";
-    public int level = 0;
-    public int jobLevel;
-    public EJobType npcJob;
-    public int strength = 0;
-    public int dexterity = 0;
-    public int intelligence = 0;
-    public int sight = 0;
-    public int cost;
-    private float maxHealthPoints;
-    private float currentHealthPoints;
+    public NpcStats stats;
     //Team definition
     private bool bPlayerTeam;
-    //Job variable
-    private JobClass jobClass;
     //Combat variables
     private Vector3 startPosition;
     private Vector3 slideTargetPosition;
