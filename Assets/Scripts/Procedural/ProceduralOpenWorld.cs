@@ -84,7 +84,7 @@ public class ProceduralOpenWorld : MonoBehaviour
         int waterWidth = 30;
         GameObject borderPrefab;
         for (int x = 0; x < 50; x++) {
-            switch (UnityEngine.Random.Range(1, 10)) {
+            switch (UnityEngine.Random.Range(1, 10)) {            
                 case 1:
                     borderPrefab = borderPrefab1;
                     break;
