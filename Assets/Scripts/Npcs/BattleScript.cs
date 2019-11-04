@@ -173,10 +173,9 @@ public class BattleScript : MonoBehaviour
             {
                 int position = UnityEngine.Random.Range(0, playerList.Count);
                 defender = playerList[position];
-                fighter.AttackEnemy(defender, () =>
-                {
-                    if (defender.stats.GetNpcCurrentHealth() <= 0)
-                    {
+                fighter.AttackEnemy(defender, () => {
+                    if (defender.GetNpcCurrentHealth() <= 0) {
+                        defender.GetAnimator().SetBool("isDead", true);
                         playerList.Remove(defender);
                     }
                     NextCombatant();
