@@ -8,10 +8,12 @@ public class RecruitmentController : MonoBehaviour
     public GameObject shopList;
     public GameObject shopCanvas;
     private PlayerDataController playerDataController;
+    private UIController uiController;
 
     void Awake()
     {
         playerDataController = FindObjectOfType<PlayerDataController>();
+        uiController = FindObjectOfType<UIController>();
         shopCanvas.SetActive(false);
     }
 
@@ -21,6 +23,7 @@ public class RecruitmentController : MonoBehaviour
         {
             playerDataController.PlayerData.CurrentGold -= npc.cost;
             playerDataController.PlayerData.CurrentCrew.Add(npc);
+            uiController.ResourcesChanged(playerDataController.PlayerData);
             shopItem.SetActive(false);
         }
     }
