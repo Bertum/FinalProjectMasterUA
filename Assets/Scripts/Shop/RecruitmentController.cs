@@ -50,13 +50,16 @@ public class RecruitmentController : MonoBehaviour
 
     public void OpenShop(int islandLevel)
     {
-        List<NpcStats> npcs = new List<NpcStats>();
-        for (int i = 0; i < 6; i++)
+        if (!shopCanvas.activeSelf)
         {
-            npcs.Add(new NpcStats(1, islandLevel));
+            List<NpcStats> npcs = new List<NpcStats>();
+            for (int i = 0; i < 6; i++)
+            {
+                npcs.Add(new NpcStats(1, islandLevel));
+            }
+            CreateList(npcs);
+            shopCanvas.SetActive(true);
         }
-        CreateList(npcs);
-        shopCanvas.SetActive(true);
     }
 
     public void CloseShop()
