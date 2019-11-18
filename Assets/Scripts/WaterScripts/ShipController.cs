@@ -18,6 +18,7 @@ public class ShipController : MonoBehaviour
     List<NpcStats> playerCrew = new List<NpcStats>();
     List<ShipResources> resources = new List<ShipResources>();
     PlayerDataController pDController;
+    UIController uiController;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class ShipController : MonoBehaviour
         domeRenderer.material.mainTextureOffset = new Vector2(offset, 0);
         domeRenderX = domeRenderer.material.mainTextureOffset.x;
         pDController = FindObjectOfType<PlayerDataController>().GetComponent<PlayerDataController>();
+        uiController = FindObjectOfType<UIController>().GetComponent<UIController>();
     }
 
 
@@ -59,8 +61,11 @@ public class ShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Movement();
         ControlDayTime();
+        uiController.ResourcesChanged(pDController.PlayerData);
+        print(domeRenderX);
         switch (domeRenderX)
         {
             case DayTime.Day:
@@ -74,6 +79,7 @@ public class ShipController : MonoBehaviour
                 LoyaltyCheck();
                 break;
             case DayTime.Afternoon:
+                print("Afternoon");
                 ShipRepairment();
                 break;
             case DayTime.Night:
@@ -108,11 +114,11 @@ public class ShipController : MonoBehaviour
     {
         if (offset > 1.5f)
         {
-            offset = 0.5f;
+            offset = 0.4999f;
         }
-        offset += Time.deltaTime / (24);
+        offset += 0.0001f;
         domeRenderer.material.mainTextureOffset = new Vector2(offset, 0);
-        domeRenderX = Math.Round(domeRenderer.material.mainTextureOffset.x, 1);
+        domeRenderX = Math.Round(domeRenderer.material.mainTextureOffset.x, 4);
     }
 
     private void ShipRepairment()

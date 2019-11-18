@@ -16,7 +16,7 @@ public class MouseController : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 150))
+            if (Physics.Raycast(ray, out hit, 300))
             {
                 if (hit.transform.gameObject.tag.Contains("Island"))
                 {
