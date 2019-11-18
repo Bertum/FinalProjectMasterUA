@@ -26,12 +26,14 @@ public class ProceduralOpenWorld : MonoBehaviour
     private List<Island> islandArray;
     private PlayerDataController playerDataController;
     private SaveLoadService saveLoadService;
+    private UIController uiController;
 
     // Start is called before the first frame update
     void Awake()
     {
         saveLoadService = new SaveLoadService();
         playerDataController = FindObjectOfType<PlayerDataController>().GetComponent<PlayerDataController>();
+        uiController = FindObjectOfType<UIController>();
         if (!PlayerPrefs.HasKey(Constants.NEWGAME) || PlayerPrefs.GetInt(Constants.NEWGAME) == 1)
         {
             seaWrapper = GameObject.FindGameObjectWithTag("SeaWrapper");
@@ -58,7 +60,15 @@ public class ProceduralOpenWorld : MonoBehaviour
             loadPlayerShipPrefab();
 
             eventsWrapper = GameObject.FindGameObjectWithTag("EventsWrapper");
+            //Default resources when creating a new game
+            playerDataController.PlayerData.TotalFood = 100;
+            playerDataController.PlayerData.TotalPirates = 50;
+            playerDataController.PlayerData.TotalGold = 1000;
+            playerDataController.PlayerData.CurrentFood = 25;
+            playerDataController.PlayerData.CurrentPirates = 5;
+            playerDataController.PlayerData.CurrentGold = 100;
             playerDataController.Save();
+            uiController.ResourcesChanged(playerDataController.PlayerData);
         }
         else
         {
