@@ -59,6 +59,10 @@ public class RecruitmentController : MonoBehaviour
     {
         if (!shopCanvas.activeSelf)
         {
+            foreach (Transform child in shopList.transform)
+            {
+                Destroy(child.gameObject);
+            }
             List<NpcStats> npcs = new List<NpcStats>();
             for (int i = 0; i < 6; i++)
             {
