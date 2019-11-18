@@ -226,4 +226,12 @@ public class ShipController : MonoBehaviour
             //YOU DIED
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "border")
+        {
+            rigidBody.velocity = Vector3.zero;
+        }
+    }
 }
