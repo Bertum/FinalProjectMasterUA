@@ -105,7 +105,7 @@ Transform:
   m_GameObject: {fileID: 710811896968155661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 91.5}
-  m_LocalScale: {x: 1.4338167, y: 1.4338167, z: 1.4338167}
+  m_LocalScale: {x: 1.6604092, y: 1.6604092, z: 1.6604092}
   m_Children: []
   m_Father: {fileID: 6627931498873660147}
   m_RootOrder: 7
@@ -1046,6 +1046,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6627931498873660147}
     m_Modifications:
+    - target: {fileID: 113990, guid: fa9176762befa1f4a8ee4b0aeacac390, type: 3}
+      propertyPath: m_Name
+      value: FX_BoatWater_Large
+      objectReference: {fileID: 0}
     - target: {fileID: 421344, guid: fa9176762befa1f4a8ee4b0aeacac390, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1089,10 +1093,6 @@ PrefabInstance:
     - target: {fileID: 421344, guid: fa9176762befa1f4a8ee4b0aeacac390, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 113990, guid: fa9176762befa1f4a8ee4b0aeacac390, type: 3}
-      propertyPath: m_Name
-      value: FX_BoatWater_Large
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa9176762befa1f4a8ee4b0aeacac390, type: 3}
