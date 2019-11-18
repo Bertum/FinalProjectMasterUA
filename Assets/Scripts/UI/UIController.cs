@@ -9,6 +9,6 @@ public class UIController : MonoBehaviour
     {
         goldText.text = string.Format("{0} / {1}", playerData.CurrentGold.ToString(), playerData.TotalGold.ToString());
         foodText.text = string.Format("{0} / {1}", playerData.CurrentFood.ToString(), playerData.TotalFood.ToString());
-        piratesText.text = string.Format("{0} / {1}", playerData.CurrentPirates.ToString(), playerData.TotalPirates.ToString());
+        piratesText.text = string.Format("{0} / {1}", playerData.CurrentCrew.Count.ToString(), playerData.TotalPirates.ToString());
     }
 }
