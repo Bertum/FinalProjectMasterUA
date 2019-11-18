@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7529509071369863035}
   - component: {fileID: 8567732098397709855}
   m_Layer: 0
-  m_Name: Border
+  m_Name: Border1
   m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 35, y: 35, z: 35}
+  m_Center: {x: -15, y: 0, z: 15}
 --- !u!1001 &4243425760374974114
 PrefabInstance:
   m_ObjectHideFlags: 0
