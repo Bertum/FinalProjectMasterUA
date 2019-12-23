@@ -10,7 +10,9 @@ public class PlayerData
     public string SceneName;
     public int CurrentFood;
     public int CurrentPirates;
+    public int CurrentWater;
     public int CurrentGold;
+    public int CurrentMedicine;
     public int TotalFood;
     public int TotalPirates;
     public int TotalGold;

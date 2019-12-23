@@ -16,7 +16,6 @@ public class ShipController : MonoBehaviour
     Rigidbody rigidBody;
     private Renderer domeRenderer;
     List<NpcStats> playerCrew = new List<NpcStats>();
-    List<ShipResources> resources = new List<ShipResources>();
     PlayerDataController pDController;
     UIController uiController;
 
@@ -48,14 +47,6 @@ public class ShipController : MonoBehaviour
             playerCrew = new List<NpcStats>(crew);
             pDController.PlayerData.CurrentCrew = playerCrew;
         }
-    }
-
-    public void SetInitialResources()
-    {
-        resources.Add(new ShipResources(EResourceType.Food, 120));
-        resources.Add(new ShipResources(EResourceType.Water, 80));
-        resources.Add(new ShipResources(EResourceType.Gold, 1000));
-        resources.Add(new ShipResources(EResourceType.Medicine, 0));
     }
 
     // Update is called once per frame
@@ -142,8 +133,10 @@ public class ShipController : MonoBehaviour
     private void ConsumeFood(NpcStats crewMember)
     {
         //TODO: Each npc eats 3 meals per day, if not, sick level increases.
-        if (resources[1].Consume(1))
+        if (pDController.PlayerData.CurrentFood > 0)
         {
+            pDController.PlayerData.CurrentFood -= 1;
+        } else {
             crewMember.IncreaseSicknessLevel(1);
         }
     }
@@ -151,8 +144,9 @@ public class ShipController : MonoBehaviour
     private void ConsumeWater(NpcStats crewMember)
     {
         //TODO: Each npc drinks 3 waters per day, if not, sick level increases.        
-        if (resources[1].Consume(1))
-        {
+        if (pDController.PlayerData.CurrentWater > 0) {
+            pDController.PlayerData.CurrentWater -= 1;
+        } else {
             crewMember.IncreaseSicknessLevel(2);
         }
     }
@@ -162,12 +156,10 @@ public class ShipController : MonoBehaviour
         //TODO: If medic in crew AND it has medicines, sick level of all decreasesx2. If not decreases.
         //If medic is sick, shit happens
         NpcStats medic = CheckForMedic();
-        if (medic != null && medic.GetSickLevel() < 10 && resources[3].quantity > 0)
+        if (medic != null && medic.GetSickLevel() < 10 && pDController.PlayerData.CurrentMedicine > 0)
         {
-            if (resources[3].Consume(1))
-            {
-                crewMember.DecreaseSicknessLevel(2);
-            }
+            pDController.PlayerData.CurrentMedicine -= 1;
+            crewMember.DecreaseSicknessLevel(2);
         }
     }
 

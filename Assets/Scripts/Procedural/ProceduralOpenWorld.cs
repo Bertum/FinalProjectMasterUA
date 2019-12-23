@@ -57,7 +57,6 @@ public class ProceduralOpenWorld : MonoBehaviour
             loadIslands();
 
             playerShipPrefab = Resources.Load("Prefabs/Procedural/PlayerShip") as GameObject;
-            loadPlayerShipPrefab();
 
             eventsWrapper = GameObject.FindGameObjectWithTag("EventsWrapper");
             //Default resources when creating a new game
@@ -66,7 +65,10 @@ public class ProceduralOpenWorld : MonoBehaviour
             playerDataController.PlayerData.TotalGold = 1000;
             playerDataController.PlayerData.CurrentFood = 25;
             playerDataController.PlayerData.CurrentPirates = 5;
+            playerDataController.PlayerData.CurrentWater = 50;
             playerDataController.PlayerData.CurrentGold = 100;
+            playerDataController.PlayerData.CurrentMedicine = 0;
+            loadPlayerShipPrefab();
             playerDataController.Save();
             uiController.ResourcesChanged(playerDataController.PlayerData);
         }
@@ -236,7 +238,6 @@ public class ProceduralOpenWorld : MonoBehaviour
         });
         ShipController controller = playerShip.GetComponentInChildren<ShipController>();
         controller.SetInitialCrew();
-        controller.SetInitialResources();
     }
 
     bool isAnotherIslandClose(float x, float z)
