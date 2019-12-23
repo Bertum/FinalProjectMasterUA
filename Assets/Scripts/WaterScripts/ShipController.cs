@@ -56,7 +56,6 @@ public class ShipController : MonoBehaviour
         Movement();
         ControlDayTime();
         uiController.ResourcesChanged(pDController.PlayerData);
-        print(domeRenderX);
         switch (domeRenderX)
         {
             case DayTime.Day:
