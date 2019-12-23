@@ -16,6 +16,8 @@ public class PlayerData
     public int TotalFood;
     public int TotalPirates;
     public int TotalGold;
+    public int TotalMedicine;
+    public int TotalWater;
     public List<MapData> MapData = new List<MapData>();
     public List<NpcStats> CurrentCrew = new List<NpcStats>();
 }

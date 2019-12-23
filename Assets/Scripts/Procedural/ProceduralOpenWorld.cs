@@ -60,14 +60,7 @@ public class ProceduralOpenWorld : MonoBehaviour
 
             eventsWrapper = GameObject.FindGameObjectWithTag("EventsWrapper");
             //Default resources when creating a new game
-            playerDataController.PlayerData.TotalFood = 100;
-            playerDataController.PlayerData.TotalPirates = 50;
-            playerDataController.PlayerData.TotalGold = 1000;
-            playerDataController.PlayerData.CurrentFood = 25;
-            playerDataController.PlayerData.CurrentPirates = 5;
-            playerDataController.PlayerData.CurrentWater = 50;
-            playerDataController.PlayerData.CurrentGold = 100;
-            playerDataController.PlayerData.CurrentMedicine = 0;
+            SetInitialPlayerData();
             loadPlayerShipPrefab();
             playerDataController.Save();
             uiController.ResourcesChanged(playerDataController.PlayerData);
@@ -76,6 +69,20 @@ public class ProceduralOpenWorld : MonoBehaviour
         {
             playerDataController.Load();
         }
+    }
+
+    private void SetInitialPlayerData()
+    {
+        playerDataController.PlayerData.TotalFood = 100;
+        playerDataController.PlayerData.TotalPirates = 50;
+        playerDataController.PlayerData.TotalGold = 1000;
+        playerDataController.PlayerData.TotalMedicine = 20;
+        playerDataController.PlayerData.TotalWater = 100;
+        playerDataController.PlayerData.CurrentFood = 25;
+        playerDataController.PlayerData.CurrentPirates = 5;
+        playerDataController.PlayerData.CurrentWater = 50;
+        playerDataController.PlayerData.CurrentGold = 100;
+        playerDataController.PlayerData.CurrentMedicine = 5;
     }
 
     private void Start()
@@ -95,8 +102,10 @@ public class ProceduralOpenWorld : MonoBehaviour
         int fixedOffset = 30;
         int waterWidth = 30;
         GameObject borderPrefab;
-        for (int x = 0; x < 50; x++) {
-            switch (UnityEngine.Random.Range(1, 10)) {            
+        for (int x = 0; x < 50; x++)
+        {
+            switch (UnityEngine.Random.Range(1, 10))
+            {
                 case 1:
                     borderPrefab = borderPrefab1;
                     break;
