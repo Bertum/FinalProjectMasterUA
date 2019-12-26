@@ -131,8 +131,9 @@ public class NpcBase : MonoBehaviour {
         bPlayerTeam = isInPlayerTeam;
     }
 
-    public void SetStartPosition(Vector3 mainPosition) {
-        transform.position = mainPosition;
+    public void SetStartPosition(Transform mainPosition) {
+        transform.position = mainPosition.position;
+        transform.rotation = mainPosition.rotation;
         startPosition = transform.position;
     }
 

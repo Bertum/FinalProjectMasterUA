@@ -9,7 +9,6 @@ public class PlayerData
     public Quaternion Rotation;
     public string SceneName;
     public int CurrentFood;
-    public int CurrentPirates;
     public int CurrentWater;
     public int CurrentGold;
     public int CurrentMedicine;
@@ -18,6 +17,7 @@ public class PlayerData
     public int TotalGold;
     public int TotalMedicine;
     public int TotalWater;
+    public int EventDifficulty;
     public List<MapData> MapData = new List<MapData>();
     public List<NpcStats> CurrentCrew = new List<NpcStats>();
 }
