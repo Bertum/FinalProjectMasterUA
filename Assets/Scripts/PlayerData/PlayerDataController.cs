@@ -1,32 +1,29 @@
 ﻿using UnityEngine;
 
-public class PlayerDataController : MonoBehaviour
-{
+public class PlayerDataController : MonoBehaviour {
     private SaveLoadService saveLoadService;
     [HideInInspector]
     public PlayerData PlayerData;
     private UIController uiController;
 
-    private void Awake()
-    {
+    private void Awake() {
         PlayerData = new PlayerData();
         saveLoadService = new SaveLoadService();
         uiController = FindObjectOfType<UIController>();
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void Load()
-    {
+    public void Load() {
         PlayerData = saveLoadService.Load();
         uiController.ResourcesChanged(PlayerData);
     }
 
-    public void Save()
-    {
-        var playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        PlayerData.Position = playerTransform.position;
-        PlayerData.Rotation = playerTransform.rotation;
-
+    public void Save() {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null) {
+            PlayerData.Position = player.transform.position;
+            PlayerData.Rotation = player.transform.rotation;
+        }
         saveLoadService.Save(PlayerData);
     }
 }

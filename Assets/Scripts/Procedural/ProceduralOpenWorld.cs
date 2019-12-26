@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProceduralOpenWorld : MonoBehaviour
-{
+public class ProceduralOpenWorld : MonoBehaviour {
 
     public static int BOTTOM_Y = 0;
     public static int SURFACE_Y = 3;
@@ -22,6 +21,7 @@ public class ProceduralOpenWorld : MonoBehaviour
     private GameObject sandPrefab;
     private GameObject decorationPrefab;
     private GameObject playerShipPrefab;
+    private GameObject battleEventHolderPrefab;
 
     private List<Island> islandArray;
     private PlayerDataController playerDataController;
@@ -29,13 +29,11 @@ public class ProceduralOpenWorld : MonoBehaviour
     private UIController uiController;
 
     // Start is called before the first frame update
-    void Awake()
-    {
+    void Awake() {
         saveLoadService = new SaveLoadService();
         playerDataController = FindObjectOfType<PlayerDataController>().GetComponent<PlayerDataController>();
         uiController = FindObjectOfType<UIController>();
-        if (!PlayerPrefs.HasKey(Constants.NEWGAME) || PlayerPrefs.GetInt(Constants.NEWGAME) == 1)
-        {
+        if (!PlayerPrefs.HasKey(Constants.NEWGAME) || PlayerPrefs.GetInt(Constants.NEWGAME) == 1) {
             seaWrapper = GameObject.FindGameObjectWithTag("SeaWrapper");
             seaPrefab = Resources.Load("Prefabs/Procedural/OceanTile") as GameObject;
             borderPrefab1 = Resources.Load("Prefabs/Procedural/Border1") as GameObject;
@@ -56,6 +54,9 @@ public class ProceduralOpenWorld : MonoBehaviour
             generateIslands(3, 3);
             loadIslands();
 
+            battleEventHolderPrefab = Resources.Load("Prefabs/Procedural/BattleEventHolder") as GameObject;
+            loadEvents(15);
+
             playerShipPrefab = Resources.Load("Prefabs/Procedural/PlayerShip") as GameObject;
 
             eventsWrapper = GameObject.FindGameObjectWithTag("EventsWrapper");
@@ -64,48 +65,39 @@ public class ProceduralOpenWorld : MonoBehaviour
             loadPlayerShipPrefab();
             playerDataController.Save();
             uiController.ResourcesChanged(playerDataController.PlayerData);
-        }
-        else
-        {
+        } else {
             playerDataController.Load();
         }
     }
 
-    private void SetInitialPlayerData()
-    {
+    private void SetInitialPlayerData() {
         playerDataController.PlayerData.TotalFood = 100;
         playerDataController.PlayerData.TotalPirates = 50;
         playerDataController.PlayerData.TotalGold = 1000;
         playerDataController.PlayerData.TotalMedicine = 20;
         playerDataController.PlayerData.TotalWater = 100;
         playerDataController.PlayerData.CurrentFood = 25;
-        playerDataController.PlayerData.CurrentPirates = 5;
         playerDataController.PlayerData.CurrentWater = 50;
         playerDataController.PlayerData.CurrentGold = 100;
         playerDataController.PlayerData.CurrentMedicine = 5;
     }
 
-    private void Start()
-    {
+    private void Start() {
         PlayerPrefs.SetInt(Constants.NEWGAME, 0);
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         //addEvent();
     }
 
     // LoadSceneMode a 100X100 water prefabs
-    void loadWater()
-    {
+    void loadWater() {
         int fixedOffset = 30;
         int waterWidth = 30;
         GameObject borderPrefab;
-        for (int x = 0; x < 50; x++)
-        {
-            switch (UnityEngine.Random.Range(1, 10))
-            {
+        for (int x = 0; x < 50; x++) {
+            switch (UnityEngine.Random.Range(1, 10)) {
                 case 1:
                     borderPrefab = borderPrefab1;
                     break;
@@ -130,26 +122,22 @@ public class ProceduralOpenWorld : MonoBehaviour
             c.transform.parent = seaWrapper.transform;
             GameObject d = GameObject.Instantiate(borderPrefab, new Vector3((50 * waterWidth), SURFACE_Y, x * waterWidth), Quaternion.identity);
             d.transform.parent = seaWrapper.transform;
-            playerDataController.PlayerData.MapData.Add(new MapData()
-            {
+            playerDataController.PlayerData.MapData.Add(new MapData() {
                 PrefabName = borderPrefab.name,
                 Position = a.transform.position,
                 Rotation = a.transform.rotation
             });
-            playerDataController.PlayerData.MapData.Add(new MapData()
-            {
+            playerDataController.PlayerData.MapData.Add(new MapData() {
                 PrefabName = borderPrefab.name,
                 Position = b.transform.position,
                 Rotation = b.transform.rotation
             });
-            playerDataController.PlayerData.MapData.Add(new MapData()
-            {
+            playerDataController.PlayerData.MapData.Add(new MapData() {
                 PrefabName = borderPrefab.name,
                 Position = c.transform.position,
                 Rotation = c.transform.rotation
             });
-            playerDataController.PlayerData.MapData.Add(new MapData()
-            {
+            playerDataController.PlayerData.MapData.Add(new MapData() {
                 PrefabName = borderPrefab.name,
                 Position = d.transform.position,
                 Rotation = d.transform.rotation
@@ -157,14 +145,11 @@ public class ProceduralOpenWorld : MonoBehaviour
 
         }
 
-        for (int x = 0; x < 50; x++)
-        {
-            for (int z = 0; z < 50; z++)
-            {
+        for (int x = 0; x < 50; x++) {
+            for (int z = 0; z < 50; z++) {
                 GameObject tile = GameObject.Instantiate(seaPrefab, new Vector3((x * waterWidth) + fixedOffset, SURFACE_Y, z * waterWidth), Quaternion.identity);
                 tile.transform.parent = seaWrapper.transform;
-                playerDataController.PlayerData.MapData.Add(new MapData()
-                {
+                playerDataController.PlayerData.MapData.Add(new MapData() {
                     PrefabName = seaPrefab.name,
                     Position = tile.transform.position,
                     Rotation = tile.transform.rotation
@@ -173,27 +158,21 @@ public class ProceduralOpenWorld : MonoBehaviour
         }
     }
 
-    void loadBottom()
-    {
+    void loadBottom() {
         float sandWidth = 4.45f;
-        for (int x = 0; x < 340; x++)
-        {
-            for (int z = 0; z < 340; z++)
-            {
+        for (int x = 0; x < 340; x++) {
+            for (int z = 0; z < 340; z++) {
                 GameObject tile = GameObject.Instantiate(sandPrefab, new Vector3(x * sandWidth, BOTTOM_Y, z * sandWidth), Quaternion.identity);
                 tile.transform.parent = bottomWrapper.transform;
-                playerDataController.PlayerData.MapData.Add(new MapData
-                {
+                playerDataController.PlayerData.MapData.Add(new MapData {
                     PrefabName = sandPrefab.name,
                     Position = tile.transform.position,
                     Rotation = tile.transform.rotation
                 });
-                if (UnityEngine.Random.Range(1, 30) == 1)
-                {
+                if (UnityEngine.Random.Range(1, 30) == 1) {
                     GameObject decoration = GameObject.Instantiate(decorationPrefab, new Vector3(x * sandWidth, BOTTOM_Y, z * sandWidth), Quaternion.identity);
                     decoration.transform.parent = bottomWrapper.transform;
-                    playerDataController.PlayerData.MapData.Add(new MapData
-                    {
+                    playerDataController.PlayerData.MapData.Add(new MapData {
                         PrefabName = decorationPrefab.name,
                         Position = decoration.transform.position,
                         Rotation = decoration.transform.rotation
@@ -203,14 +182,11 @@ public class ProceduralOpenWorld : MonoBehaviour
         }
     }
 
-    void loadIslands()
-    {
-        for (int i = 0; i < islandArray.Count; i++)
-        {
+    void loadIslands() {
+        for (int i = 0; i < islandArray.Count; i++) {
             GameObject island = GameObject.Instantiate(((Island)islandArray[i]).getPrefab(), new Vector3(((Island)islandArray[i]).getX(), ((Island)islandArray[i]).getY(), ((Island)islandArray[i]).getZ()), Quaternion.identity);
             island.transform.parent = mapWrapper.transform;
-            playerDataController.PlayerData.MapData.Add(new MapData
-            {
+            playerDataController.PlayerData.MapData.Add(new MapData {
                 PrefabName = ((Island)islandArray[i]).getPrefab().name,
                 Position = island.transform.position,
                 Rotation = island.transform.rotation
@@ -218,29 +194,30 @@ public class ProceduralOpenWorld : MonoBehaviour
         }
     }
 
-    void generateIslands(int numberOfIslands, int lvl)
-    {
-        for (int i = 1; i <= numberOfIslands; i++)
-        {
+    void generateIslands(int numberOfIslands, int lvl) {
+        for (int i = 1; i <= numberOfIslands; i++) {
             Island island = new Island(UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), lvl);
-            if (!isAnotherIslandClose(island.getX(), island.getZ()))
-            {
+            if (!isAnotherIslandClose(island.getX(), island.getZ())) {
                 islandArray.Add(island);
-            }
-            else
-            {
+            } else {
                 i--;
             }
         }
     }
 
+    void loadEvents(int numberOfEvents) {
+        for(int i = 1; i <= numberOfEvents; i++) {
+            var eventSelected = UnityEngine.Random.Range(1,10) > 5 ? battleEventHolderPrefab : battleEventHolderPrefab;
+            GameObject eventHolder = GameObject.Instantiate(eventSelected, new Vector3(UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), SURFACE_Y , 
+                UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT)),Quaternion.identity);
+        }
+    }
+
     // Loads the player boat
-    void loadPlayerShipPrefab()
-    {
+    void loadPlayerShipPrefab() {
         GameObject playerShip = GameObject.Instantiate(playerShipPrefab, new Vector3(150, SURFACE_Y, 150), Quaternion.identity);
         playerShip.transform.parent = seaWrapper.transform;
-        playerDataController.PlayerData.MapData.Add(new MapData
-        {
+        playerDataController.PlayerData.MapData.Add(new MapData {
             PrefabName = playerShipPrefab.name,
             Position = playerShip.transform.position,
             Rotation = playerShip.transform.rotation
@@ -249,16 +226,13 @@ public class ProceduralOpenWorld : MonoBehaviour
         controller.SetInitialCrew();
     }
 
-    bool isAnotherIslandClose(float x, float z)
-    {
+    bool isAnotherIslandClose(float x, float z) {
         bool result = false;
         double pot = 2;
-        for (int i = 0; i < islandArray.Count; i++)
-        {
+        for (int i = 0; i < islandArray.Count; i++) {
             double dx = ((Island)islandArray[i]).getX() - x;
             double dz = ((Island)islandArray[i]).getZ() - z;
-            if (Math.Sqrt(Math.Pow(dx, pot) + Math.Pow(dz, pot)) < 80)
-            {
+            if (Math.Sqrt(Math.Pow(dx, pot) + Math.Pow(dz, pot)) < 80) {
                 result = true;
                 break;
             }
