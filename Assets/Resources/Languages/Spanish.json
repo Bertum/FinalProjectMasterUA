@@ -23,5 +23,8 @@
   "job.medic": "Medico",
   "job.carpenter": "Carpintero",
   "menu.buy": "Comprar",
-  "shop.cost": "Coste:"
+  "shop.cost": "Coste:",
+  "confirmation.body": "Vas a entrar en {0}. ¿Estás seguro?",
+  "confirmation.yes": "Si",
+  "confirmation.no": "No"
 }
