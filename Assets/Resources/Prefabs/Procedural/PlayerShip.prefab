@@ -4845,10 +4845,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6627931498873660147}
   - component: {fileID: 6627931498873660145}
-  - component: {fileID: 6627931498873660144}
-  - component: {fileID: 7943578997728816429}
   - component: {fileID: 2348334628919616356}
   - component: {fileID: 6367850493027507115}
+  - component: {fileID: 5055361724978718949}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -4893,34 +4892,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &6627931498873660144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6627931498873660146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21aff2522d83c01448b0c5fce128b256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterLevel: 3
-  floatThreshold: 0.1
-  downForce: 0.05
---- !u!114 &7943578997728816429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6627931498873660146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033a468ce76f0ac48bb3d69a96067e80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipSpeed: 10
 --- !u!65 &2348334628919616356
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5030,6 +5001,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5055361724978718949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627931498873660146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4aa9940cadec04e971adaa402dd7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipSpeed: 20
 --- !u!1 &8870195595405924797
 GameObject:
   m_ObjectHideFlags: 0
