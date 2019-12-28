@@ -26,5 +26,7 @@
   "shop.cost": "Coste:",
   "confirmation.body": "Vas a entrar en {0}. ¿Estás seguro?",
   "confirmation.yes": "Si",
-  "confirmation.no": "No"
+  "confirmation.no": "No",
+  "confirmation.battleLevel": "Batalla nivel",
+  "confirmation.sinkLevel": "Hundimiento nivel"
 }

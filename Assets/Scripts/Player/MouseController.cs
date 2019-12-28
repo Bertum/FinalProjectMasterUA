@@ -6,9 +6,11 @@ public class MouseController : MonoBehaviour
     private RecruitmentController recruitmentController;
     private PlayerDataController pDataController;
     private ConfirmationScreen confirmationScreen;
+    private LanguageController languageController;
 
     private void Awake()
     {
+        languageController = FindObjectOfType<LanguageController>();
         confirmationScreen = FindObjectOfType<ConfirmationScreen>();
         recruitmentController = GameObject.FindObjectOfType<RecruitmentController>().GetComponent<RecruitmentController>();
         pDataController = GameObject.FindObjectOfType<PlayerDataController>();
@@ -34,7 +36,7 @@ public class MouseController : MonoBehaviour
                     //SaveData
                     pDataController.Save();
                     //Load new Scene with Parameters
-                    confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, "Batalla nivel 1");
+                    confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, languageController.GetTextById("confirmation.battleLevel") + " " + pDataController.PlayerData.EventDifficulty);
                 }
                 if (hit.transform.gameObject.tag.Contains("SinkEvent"))
                 {
@@ -42,7 +44,7 @@ public class MouseController : MonoBehaviour
                     //SaveData
                     pDataController.Save();
                     //Load new Scene with Parameters
-                    confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, "Batalla nivel 1");
+                    confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, languageController.GetTextById("confirmation.sinkLevel") + " " + pDataController.PlayerData.EventDifficulty);
                 }
             }
         }
