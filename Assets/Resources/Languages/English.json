@@ -26,5 +26,7 @@
   "shop.cost": "Cost:",
   "confirmation.body": "You will enter to {0}. Are you sure?",
   "confirmation.yes": "Yes",
-  "confirmation.no": "No"
+  "confirmation.no": "No",
+  "confirmation.battleLevel": "Battle level",
+  "confirmation.sinkLevel": "Sink level"
 }
