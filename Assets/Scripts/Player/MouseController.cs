@@ -34,7 +34,7 @@ public class MouseController : MonoBehaviour
                     //SaveData
                     pDataController.Save();
                     //Load new Scene with Parameters
-                    confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, "Batalla nivel 1");
+                    confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, "Batalla nivel "+ pDataController.PlayerData.EventDifficulty);
                 }
                 if (hit.transform.gameObject.tag.Contains("SinkEvent"))
                 {
@@ -42,7 +42,7 @@ public class MouseController : MonoBehaviour
                     //SaveData
                     pDataController.Save();
                     //Load new Scene with Parameters
-                    confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, "Batalla nivel 1");
+                    confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, "Hundimiento nivel " + pDataController.PlayerData.EventDifficulty);
                 }
             }
         }
