@@ -22,6 +22,7 @@ public class ProceduralOpenWorld : MonoBehaviour {
     private GameObject decorationPrefab;
     private GameObject playerShipPrefab;
     private GameObject battleEventHolderPrefab;
+    private GameObject wreckageEventHolderPrefab;
 
     private List<Island> islandArray;
     private PlayerDataController playerDataController;
@@ -55,6 +56,7 @@ public class ProceduralOpenWorld : MonoBehaviour {
             loadIslands();
 
             battleEventHolderPrefab = Resources.Load("Prefabs/Procedural/BattleEventHolder") as GameObject;
+            wreckageEventHolderPrefab = Resources.Load("Prefabs/Procedural/WreckageEventHolder") as GameObject;
             loadEvents(15);
 
             playerShipPrefab = Resources.Load("Prefabs/Procedural/PlayerShip") as GameObject;
@@ -97,7 +99,7 @@ public class ProceduralOpenWorld : MonoBehaviour {
         int waterWidth = 30;
         GameObject borderPrefab;
         for (int x = 0; x < 50; x++) {
-            switch (UnityEngine.Random.Range(1, 10)) {
+            switch (UnityEngine.Random.Range(1, 5)) {
                 case 1:
                     borderPrefab = borderPrefab1;
                     break;
@@ -207,7 +209,7 @@ public class ProceduralOpenWorld : MonoBehaviour {
 
     void loadEvents(int numberOfEvents) {
         for(int i = 1; i <= numberOfEvents; i++) {
-            var eventSelected = UnityEngine.Random.Range(1,10) > 5 ? battleEventHolderPrefab : battleEventHolderPrefab;
+            var eventSelected = UnityEngine.Random.Range(1,10) > 5 ? battleEventHolderPrefab : wreckageEventHolderPrefab;
             GameObject eventHolder = GameObject.Instantiate(eventSelected, new Vector3(UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT), SURFACE_Y , 
                 UnityEngine.Random.Range(GRID_BOTTOM_LIMIT, GRID_UPPER_LIMIT)),Quaternion.identity);
         }

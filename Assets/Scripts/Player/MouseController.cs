@@ -38,13 +38,13 @@ public class MouseController : MonoBehaviour
                     //Load new Scene with Parameters
                     confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, languageController.GetTextById("confirmation.battleLevel") + " " + pDataController.PlayerData.EventDifficulty);
                 }
-                if (hit.transform.gameObject.tag.Contains("SinkEvent"))
+                if (hit.transform.gameObject.tag.Contains("WreckageEvent"))
                 {
                     pDataController.PlayerData.EventDifficulty = UnityEngine.Random.Range(1, 3);
                     //SaveData
                     pDataController.Save();
                     //Load new Scene with Parameters
-                    confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, languageController.GetTextById("confirmation.sinkLevel") + " " + pDataController.PlayerData.EventDifficulty);
+                    confirmationScreen.ActivateCanvas(SceneNames.SINK_SCENE, languageController.GetTextById("confirmation.sinkLevel") + " " + pDataController.PlayerData.EventDifficulty);
                 }
             }
         }

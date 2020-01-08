@@ -6,11 +6,12 @@ public class BaseProceduralScene : MonoBehaviour
     public static int BOTTOM_Y = 0;
     public static int SURFACE_Y = 3;
 
-    private GameObject seaWrapper;
-    private GameObject bottomWrapper;
+    protected GameObject seaWrapper;
+    protected GameObject bottomWrapper;
     private GameObject seaPrefab;
     private GameObject sandPrefab;
     private GameObject decorationPrefab;
+    private GameObject borderPrefab;
 
     // Start is called before the first frame update
     void Start() {
@@ -18,6 +19,7 @@ public class BaseProceduralScene : MonoBehaviour
     }
 
     public void start() {
+        borderPrefab = Resources.Load("Prefabs/Procedural/BorderInv") as GameObject;
         seaWrapper = GameObject.FindGameObjectWithTag("SeaWrapper");
         seaPrefab = Resources.Load("Prefabs/Procedural/OceanTile") as GameObject;
         loadWater();
@@ -33,11 +35,21 @@ public class BaseProceduralScene : MonoBehaviour
     void loadWater() {
         int fixedOffset = 30;
         int waterWidth = 30;
-        for (int x = 0; x < 10; x++) {
-            for (int z = 0; z < 10; z++) {
+        for(int x = -3; x < 13; x++) {
+            for (int z = -3; z < 13; z++) {
                 GameObject tile = GameObject.Instantiate(seaPrefab, new Vector3((x * waterWidth) + fixedOffset, SURFACE_Y, z * waterWidth), Quaternion.identity);
                 tile.transform.parent = seaWrapper.transform;
             }
+        }
+        for (int x = 0; x < 10; x++) {
+            GameObject a = GameObject.Instantiate(borderPrefab, new Vector3((x * waterWidth), SURFACE_Y, 0), Quaternion.identity);
+            a.transform.parent = seaWrapper.transform;
+            GameObject b = GameObject.Instantiate(borderPrefab, new Vector3((x * waterWidth), SURFACE_Y, 10 * waterWidth), Quaternion.identity);
+            b.transform.parent = seaWrapper.transform;
+            GameObject c = GameObject.Instantiate(borderPrefab, new Vector3((0 * waterWidth), SURFACE_Y, x * waterWidth), Quaternion.identity);
+            c.transform.parent = seaWrapper.transform;
+            GameObject d = GameObject.Instantiate(borderPrefab, new Vector3((10 * waterWidth), SURFACE_Y, x * waterWidth), Quaternion.identity);
+            d.transform.parent = seaWrapper.transform;
         }
     }
 
