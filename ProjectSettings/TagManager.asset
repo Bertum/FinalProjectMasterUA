@@ -16,6 +16,9 @@ TagManager:
   - PlayerLocations
   - EnemyLocations
   - BattleEvent
+  - Wreck
+  - SandTile
+  - WreckageEvent
   layers:
   - Default
   - TransparentFX

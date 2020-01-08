@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5269509178874764907}
   - component: {fileID: 645691425885491880}
   - component: {fileID: 864314196694135036}
-  - component: {fileID: 1959682795158244866}
   - component: {fileID: 133331017364851118}
+  - component: {fileID: 3588047721091434247}
   m_Layer: 0
   m_Name: Debris1
   m_TagString: Untagged
@@ -79,21 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1959682795158244866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2200477089093104499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21aff2522d83c01448b0c5fce128b256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterLevel: 3
-  floatThreshold: 0.1
-  downForce: 0.125
 --- !u!54 &133331017364851118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -110,6 +95,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3588047721091434247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200477089093104499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29514577033ec45428a5edaf0d9fd373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterLevel: 3
+  floatThreshold: 0.1
+  downForce: 0.125
 --- !u!1 &5145127075727431969
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,8 +121,8 @@ GameObject:
   - component: {fileID: 4625889448056750114}
   - component: {fileID: 6336869720354483681}
   - component: {fileID: 7991103558166257718}
-  - component: {fileID: 3231624443912568400}
   - component: {fileID: 3846719644372110261}
+  - component: {fileID: 7342250856907603928}
   m_Layer: 0
   m_Name: Debris1 (1)
   m_TagString: Untagged
@@ -189,21 +189,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3231624443912568400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5145127075727431969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21aff2522d83c01448b0c5fce128b256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterLevel: 3
-  floatThreshold: 0.1
-  downForce: 0.125
 --- !u!54 &3846719644372110261
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -220,6 +205,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7342250856907603928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145127075727431969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29514577033ec45428a5edaf0d9fd373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterLevel: 3
+  floatThreshold: 0.1
+  downForce: 0.125
 --- !u!1 &5357935136765408303
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,11 +231,11 @@ GameObject:
   - component: {fileID: 5357935136765236527}
   - component: {fileID: 5357935136762355685}
   - component: {fileID: 5357935136763369697}
-  - component: {fileID: 5662092823510096529}
   - component: {fileID: 1965577956009595322}
+  - component: {fileID: 7631346590353833412}
   m_Layer: 0
   m_Name: Debris1
-  m_TagString: Untagged
+  m_TagString: Wreck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,21 +302,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5662092823510096529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5357935136765408303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21aff2522d83c01448b0c5fce128b256, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterLevel: 3.1
-  floatThreshold: 0.1
-  downForce: 0.125
 --- !u!54 &1965577956009595322
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -333,6 +318,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7631346590353833412
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5357935136765408303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4392598, y: 0.1854831, z: 2.871698}
+  m_Center: {x: 0.4045608, y: 0.06828916, z: -0.5472355}
 --- !u!54 &2729923390598532850
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -349,7 +347,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7924737552877527640
+--- !u!114 &2243251833155927306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -358,10 +356,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7242041187714851978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21aff2522d83c01448b0c5fce128b256, type: 3}
+  m_Script: {fileID: 11500000, guid: 29514577033ec45428a5edaf0d9fd373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterLevel: 3.1
+  waterLevel: 3
   floatThreshold: 0.1
   downForce: 0.125
 --- !u!1001 &7242041187714733578

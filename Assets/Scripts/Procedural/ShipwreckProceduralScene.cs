@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShipwreckProceduralScene : BaseProceduralScene
 {
-    private GameObject seaWrapper;
     private GameObject boatPrefab;
     private List<GameObject> debrisPrefabs;
 
@@ -30,13 +29,14 @@ public class ShipwreckProceduralScene : BaseProceduralScene
 
     // Loads the player boat
     void loadBoat() {
-        GameObject boat = GameObject.Instantiate(boatPrefab, new Vector3(100, SURFACE_Y, 100), Quaternion.identity);
+        GameObject boat = GameObject.Instantiate(boatPrefab, new Vector3(100, SURFACE_Y+0.5f, 100), Quaternion.identity);
         boat.transform.parent = seaWrapper.transform;
     }
 
     // Loads ramdom positioned wreck
     void loadDebris() {
         int numberOfDebris = Random.Range(6, 10);
+        Debug.Log("voy a crear " + numberOfDebris + " restos de naufragio");
 
         for (int x = 1; x <= numberOfDebris; x++)
         {
