@@ -40,8 +40,8 @@ public class ShipController : MonoBehaviour
         if (!PlayerPrefs.HasKey(Constants.NEWGAME) || PlayerPrefs.GetInt(Constants.NEWGAME) == 1)
         {
             NpcStats[] crew = {
-            new NpcStats("Smith", 2, Constants.EJobType.Official, 0, UnityEngine.Random.Range(4,6), UnityEngine.Random.Range(4, 6), UnityEngine.Random.Range(4, 6), UnityEngine.Random.Range(4, 6)),
-            new NpcStats("Juanito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3,5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5)),
+            new NpcStats("Smith", 2, Constants.EJobType.Official, 0, UnityEngine.Random.Range(4, 6), UnityEngine.Random.Range(4, 6), UnityEngine.Random.Range(4, 6), UnityEngine.Random.Range(4, 6)),
+            new NpcStats("Juanito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5)),
             new NpcStats("Jorgito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5)),
             new NpcStats("Jaimito", 1, Constants.EJobType.Rookie, 0, UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5), UnityEngine.Random.Range(3, 5))};
             playerCrew = new List<NpcStats>(crew);

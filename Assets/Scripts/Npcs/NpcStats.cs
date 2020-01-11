@@ -1,5 +1,5 @@
 ﻿using static Constants;
-
+[System.Serializable]
 public class NpcStats
 {
     //Attributes definition.
@@ -46,10 +46,10 @@ public class NpcStats
         level = UnityEngine.Random.Range(minLevel, maxLevel);
         npcJob = (EJobType)UnityEngine.Random.Range(0, 7);
         jobClass = new JobClass(npcJob, level);
-        strength = UnityEngine.Random.Range(1, 10) * level;
-        dexterity = UnityEngine.Random.Range(1, 10) * level;
-        intelligence = UnityEngine.Random.Range(1, 10) * level;
-        sight = UnityEngine.Random.Range(1, 10) * level;
+        strength = UnityEngine.Random.Range(1, level*3);
+        dexterity = UnityEngine.Random.Range(1, level * 3);
+        intelligence = UnityEngine.Random.Range(1, level * 3);
+        sight = UnityEngine.Random.Range(1, level * 3);
         cost = 50 * level;
         SetMaxHP();
     }
