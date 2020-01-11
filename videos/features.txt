@@ -1,0 +1,6 @@
+-Niveles procedurales
+-Batallas
+-Gestión de recursos
+-En inglés y español
+-Carga asíncrona con consejos
+-Guardado automático
