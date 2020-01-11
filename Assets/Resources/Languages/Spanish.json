@@ -9,7 +9,6 @@
   "menu.creditsHeader": "Créditos:",
   "menu.credits": "Programación: \n Alberto Delgado Cruzado \n Miguel Agudo Ballesteros \n Óscar Sánchez Fernández \n Gráficos: \n JoannaVu - Black Pearl Font \n Kenney - UI Assets \n Synty Studios - Pirates Pack",
   "loading.loading": "Cargando",
-  "tip.test": "Consejo de prueba",
   "menu.gamePaused": "Pausado",
   "menu.mainMenu": "Menú Principal",
   "stats.strength": "Fuerza",
@@ -28,5 +27,8 @@
   "confirmation.yes": "Si",
   "confirmation.no": "No",
   "confirmation.battleLevel": "Batalla nivel",
-  "confirmation.sinkLevel": "Hundimiento nivel"
+  "confirmation.sinkLevel": "Hundimiento nivel",
+  "tip.islandShop": "Puedes reclutar nuevos piratas en las islas",
+  "tip.getResources": "Para obtener recursos gana batallas o recoge restos de un naufragio",
+  "tip.resources": "Los recursos se consumen con el tiempo dependiendo de la cantidad de piratas a bordo"
 }
