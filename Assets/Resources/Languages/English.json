@@ -9,7 +9,6 @@
   "menu.creditsHeader": "Credits:",
   "menu.credits": "Programing: \n Alberto Delgado Cruzado \n Miguel Agudo Ballesteros \n Oscar Sanchez Fernandez  \n Graphics: \n JoannaVu - Black Pearl Font \n Kenney - UI Assets \n Synty Studios - Pirates Pack",
   "loading.loading": "Loading",
-  "tip.test": "Tip for testing",
   "menu.gamePaused": "Paused",
   "menu.mainMenu": "Main Menu",
   "stats.strength": "Strength",
@@ -28,5 +27,8 @@
   "confirmation.yes": "Yes",
   "confirmation.no": "No",
   "confirmation.battleLevel": "Battle level",
-  "confirmation.sinkLevel": "Sink level"
+  "confirmation.sinkLevel": "Sink level",
+  "tip.islandShop": "You can recruit new pirates on the islands",
+  "tip.getResources": "To get resources win battles or collect wrecks",
+  "tip.resources": "Resources are consumed over time depending on the number of pirates on board"
 }
