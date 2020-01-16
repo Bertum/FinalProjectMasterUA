@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
     public GameObject PauseMenu;
     private bool paused;
+    private SceneLoaderService sceneLoaderService;
+    private PlayerDataController playerDataController;
 
     private void Awake()
     {
+        sceneLoaderService = new SceneLoaderService();
         paused = false;
         PauseMenu.SetActive(false);
+        playerDataController = FindObjectOfType<PlayerDataController>();
     }
 
     void Update()
@@ -29,11 +32,13 @@ public class PauseMenuController : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadSceneAsync(0);
+        playerDataController.Save();
+        sceneLoaderService.LoadScene(SceneNames.MAIN_MENU);
     }
 
     public void ExitGame()
     {
+        playerDataController.Save();
         Application.Quit();
     }
 }
