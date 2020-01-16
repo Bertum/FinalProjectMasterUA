@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using static Constants;
 
-public class BattleScript : MonoBehaviour {
+public class BattleScript : MonoBehaviour
+{
 
-    public enum EBattleStatus {
+    public enum EBattleStatus
+    {
         PreparingTurn,
         ActiveTurn,
         NpcAttacking,
@@ -28,19 +29,16 @@ public class BattleScript : MonoBehaviour {
     private SceneLoaderService sceneLoader;
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         sceneLoader = new SceneLoaderService();
         characterPrefab = (GameObject)Resources.Load("Prefabs/Characters/RandomCharacter");
         playerDataController = GameObject.FindObjectOfType<PlayerDataController>();
-        /*playerDataController.PlayerData.CurrentCrew = new List<NpcStats>();
-        for (int i = 0; i < 5; i++) {
-            var newStat = new NpcStats(3, 5);
-            playerDataController.PlayerData.CurrentCrew.Add(newStat);
-        }*/
         GameObject playerLocations = GameObject.FindGameObjectWithTag("PlayerLocations");
         GameObject enemyLocations = GameObject.FindGameObjectWithTag("EnemyLocations");
         var numOfCharacters = playerDataController.PlayerData.CurrentCrew.Count >= 5 ? 5 : playerDataController.PlayerData.CurrentCrew.Count;
-        for (int i = 0; i < numOfCharacters; i++) {
+        for (int i = 0; i < numOfCharacters; i++)
+        {
             var newPlayer = Instantiate(characterPrefab);
             var newNpcBase = newPlayer.GetComponent<NpcBase>();
             newNpcBase.stats = playerDataController.PlayerData.CurrentCrew[i];
@@ -49,13 +47,14 @@ public class BattleScript : MonoBehaviour {
             goodBois.Add(newNpcBase);
         }
         var eventDifficulty = playerDataController.PlayerData.EventDifficulty;
-        var numOfEnemies = Random.Range(3, eventDifficulty*2 - 1);
+        var numOfEnemies = Random.Range(3, eventDifficulty * 2 - 1);
         //TODO change num by parameter
-        for (int i = 0; i < numOfEnemies; i++) {
+        for (int i = 0; i < numOfEnemies; i++)
+        {
             var newPlayer = Instantiate(characterPrefab);
             var newNpcBase = newPlayer.GetComponent<NpcBase>();
             //TODO change level by parametes
-            newNpcBase.stats = new NpcStats(eventDifficulty, eventDifficulty*2);
+            newNpcBase.stats = new NpcStats(eventDifficulty, eventDifficulty * 2);
             newNpcBase.SetPlayerTeam(false);
             newNpcBase.SetStartPosition(enemyLocations.transform.GetChild(i).transform);
             badBois.Add(newNpcBase);
@@ -65,10 +64,13 @@ public class BattleScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-        switch (BattleHasEnded()) {
+    void Update()
+    {
+        switch (BattleHasEnded())
+        {
             case EEndBattleStatus.Ongoing:
-                switch (battleStatus) {
+                switch (battleStatus)
+                {
                     case EBattleStatus.PreparingTurn:
                         PrepareTurn();
                         break;
@@ -86,7 +88,8 @@ public class BattleScript : MonoBehaviour {
                 }
                 break;
             case EEndBattleStatus.PlayerWon:
-                foreach (NpcBase npc in playerTeam) {
+                foreach (NpcBase npc in playerTeam)
+                {
                     npc.stats.GainExperience(enemyTeam.Count * 5);
                 }
                 playerDataController.Save();
@@ -103,16 +106,21 @@ public class BattleScript : MonoBehaviour {
         }
     }
 
-    private void PrepareBattle() {
+    private void PrepareBattle()
+    {
         orderList.AddRange(goodBois);
         orderList.AddRange(badBois);
         orderList.Sort(SetBattleOrder);
         //PrintOrderList();
 
-        foreach (NpcBase npc in orderList) {
-            if (npc.GetPlayerTeam()) {
+        foreach (NpcBase npc in orderList)
+        {
+            if (npc.GetPlayerTeam())
+            {
                 playerTeam.Add(npc);
-            } else {
+            }
+            else
+            {
                 enemyTeam.Add(npc);
             }
         }
@@ -120,44 +128,58 @@ public class BattleScript : MonoBehaviour {
         battleStatus = EBattleStatus.PreparingTurn;
     }
 
-    private void PrepareTurn() {
+    private void PrepareTurn()
+    {
         //Limpiamos lista de npcs del turno anterior
         playerTeamTurn.Clear();
         enemyTeamTurn.Clear();
         //Solo lucharan aquellos que sigan vivos dentro del equipo
-        for (int i = 0; i < playerTeam.Count; i++) {
-            if (playerTeam[i].stats.GetNpcCurrentHealth() > 0) {
+        for (int i = 0; i < playerTeam.Count; i++)
+        {
+            if (playerTeam[i].stats.GetNpcCurrentHealth() > 0)
+            {
                 playerTeamTurn.Add(playerTeam[i]);
             }
         }
-        for (int i = 0; i < enemyTeam.Count; i++) {
-            if (enemyTeam[i].stats.GetNpcCurrentHealth() > 0) {
+        for (int i = 0; i < enemyTeam.Count; i++)
+        {
+            if (enemyTeam[i].stats.GetNpcCurrentHealth() > 0)
+            {
                 enemyTeamTurn.Add(enemyTeam[i]);
             }
         }
         battleStatus = EBattleStatus.ActiveTurn;
     }
 
-    private void DoBattle(List<NpcBase> playerList, List<NpcBase> enemyList) {
+    private void DoBattle(List<NpcBase> playerList, List<NpcBase> enemyList)
+    {
         NpcBase defender;
         NpcBase fighter = orderList[combatant];
-        if (fighter.stats.GetNpcCurrentHealth() > 0) {
+        if (fighter.stats.GetNpcCurrentHealth() > 0)
+        {
             battleStatus = EBattleStatus.NpcAttacking;
-            if (fighter.GetPlayerTeam()) {
+            if (fighter.GetPlayerTeam())
+            {
                 int position = UnityEngine.Random.Range(0, enemyList.Count);
                 defender = enemyList[position];
-                fighter.AttackEnemy(defender, () => {
-                    if (defender.stats.GetNpcCurrentHealth() <= 0) {
+                fighter.AttackEnemy(defender, () =>
+                {
+                    if (defender.stats.GetNpcCurrentHealth() <= 0)
+                    {
                         enemyList.Remove(defender);
                     }
                     NextCombatant();
                 });
                 print(fighter.stats.npcName + " has attacked " + defender.stats.npcName);
-            } else {
+            }
+            else
+            {
                 int position = UnityEngine.Random.Range(0, playerList.Count);
                 defender = playerList[position];
-                fighter.AttackEnemy(defender, () => {
-                    if (defender.GetNpcCurrentHealth() <= 0) {
+                fighter.AttackEnemy(defender, () =>
+                {
+                    if (defender.GetNpcCurrentHealth() <= 0)
+                    {
                         defender.GetAnimator().SetBool("isDead", true);
                         playerList.Remove(defender);
                     }
@@ -165,42 +187,62 @@ public class BattleScript : MonoBehaviour {
                 });
                 print(fighter.stats.npcName + " has attacked " + defender.stats.npcName);
             }
-        } else {
+        }
+        else
+        {
             NextCombatant();
         }
     }
 
-    private void NextCombatant() {
+    private void NextCombatant()
+    {
         battleStatus = EBattleStatus.ActiveTurn;
-        if (combatant < orderList.Count - 1) {
+        if (combatant < orderList.Count - 1)
+        {
             combatant++;
-        } else {
+        }
+        else
+        {
             combatant = 0;
             battleStatus = EBattleStatus.EndTurn;
         }
     }
 
-    private static int SetBattleOrder(NpcBase APirate, NpcBase BPirate) {
-        if (APirate == null) {
-            if (BPirate == null) {
+    private static int SetBattleOrder(NpcBase APirate, NpcBase BPirate)
+    {
+        if (APirate == null)
+        {
+            if (BPirate == null)
+            {
                 //If both null equals
                 return 0;
-            } else {
+            }
+            else
+            {
                 //if APirate null then smaller
                 return -1;
             }
-        } else {
-            if (BPirate == null) {
+        }
+        else
+        {
+            if (BPirate == null)
+            {
                 //if BPirate null then A bigger
                 return 1;
-            } else {
+            }
+            else
+            {
                 //else compare level+dexterity
                 int aOrder = APirate.stats.level + APirate.stats.dexterity;
                 int bOrder = BPirate.stats.level + BPirate.stats.dexterity;
-                if (bOrder.CompareTo(aOrder) == 0) {
-                    if (BPirate.stats.level > APirate.stats.level) {
+                if (bOrder.CompareTo(aOrder) == 0)
+                {
+                    if (BPirate.stats.level > APirate.stats.level)
+                    {
                         return 1;
-                    } else {
+                    }
+                    else
+                    {
                         return -1;
                     }
                 }
@@ -210,27 +252,36 @@ public class BattleScript : MonoBehaviour {
     }
 
 
-    private EEndBattleStatus BattleHasEnded() {
+    private EEndBattleStatus BattleHasEnded()
+    {
         bool playerTeamTotalLife = false;
         bool enemyTeamTotalLife = false;
-        foreach (NpcBase npc in playerTeam) {
-            if (npc.stats.GetNpcCurrentHealth() > 0) {
+        foreach (NpcBase npc in playerTeam)
+        {
+            if (npc.stats.GetNpcCurrentHealth() > 0)
+            {
                 playerTeamTotalLife = true;
             }
         }
         //If none are alive, battle has ended
-        if (!playerTeamTotalLife) {
+        if (!playerTeamTotalLife)
+        {
             playerDataController.PlayerData.EventDifficulty = 0;
             return EEndBattleStatus.PlayerLost;
-        } else {
+        }
+        else
+        {
             //If 1 player was alive, we look the enemy
-            foreach (NpcBase npc in enemyTeam) {
-                if (npc.stats.GetNpcCurrentHealth() > 0) {
+            foreach (NpcBase npc in enemyTeam)
+            {
+                if (npc.stats.GetNpcCurrentHealth() > 0)
+                {
                     enemyTeamTotalLife = true;
                 }
             }
             //if none are alive, battle has ended
-            if (!enemyTeamTotalLife) {
+            if (!enemyTeamTotalLife)
+            {
                 playerDataController.PlayerData.EventDifficulty = 0;
                 return EEndBattleStatus.PlayerWon;
             }
@@ -252,33 +303,43 @@ public class BattleScript : MonoBehaviour {
     }
     */
 
-    private void PrintOrderList() {
-        for (int i = 0; i < orderList.Count; i++) {
+    private void PrintOrderList()
+    {
+        for (int i = 0; i < orderList.Count; i++)
+        {
             int order = orderList[i].stats.level + orderList[i].stats.dexterity;
             print("Order is " + i + ", total is: " + order + " and level is: " + orderList[i].stats.level);
         }
     }
 
-    private void PrintOrderWithDamage() {
-        for (int i = 0; i < orderList.Count; i++) {
+    private void PrintOrderWithDamage()
+    {
+        for (int i = 0; i < orderList.Count; i++)
+        {
             print("For NPC " + i + " max health is: " + orderList[i].stats.GetNpcMaximunHealth() + " and currently is " + orderList[i].stats.GetNpcCurrentHealth());
         }
     }
 
-    private void PrintEndOfBattle() {
-        for (int i = 0; i < playerTeam.Count; i++) {
+    private void PrintEndOfBattle()
+    {
+        for (int i = 0; i < playerTeam.Count; i++)
+        {
             print("Player " + i + " max health is: " + playerTeam[i].stats.GetNpcMaximunHealth() + " and currently is " + playerTeam[i].stats.GetNpcCurrentHealth());
         }
-        for (int i = 0; i < enemyTeam.Count; i++) {
+        for (int i = 0; i < enemyTeam.Count; i++)
+        {
             print("Enemy " + i + " max health is: " + enemyTeam[i].stats.GetNpcMaximunHealth() + " and currently is " + enemyTeam[i].stats.GetNpcCurrentHealth());
         }
     }
 
-    private void PrintTurn() {
-        for (int i = 0; i < playerTeam.Count; i++) {
+    private void PrintTurn()
+    {
+        for (int i = 0; i < playerTeam.Count; i++)
+        {
             print("Turn " + turn + " for Player " + i + " max health is: " + playerTeam[i].stats.GetNpcMaximunHealth() + " and currently is " + playerTeam[i].stats.GetNpcCurrentHealth());
         }
-        for (int i = 0; i < enemyTeam.Count; i++) {
+        for (int i = 0; i < enemyTeam.Count; i++)
+        {
             print("Turn " + turn + " for Enemy " + i + " max health is: " + enemyTeam[i].stats.GetNpcMaximunHealth() + " and currently is " + enemyTeam[i].stats.GetNpcCurrentHealth());
         }
     }
