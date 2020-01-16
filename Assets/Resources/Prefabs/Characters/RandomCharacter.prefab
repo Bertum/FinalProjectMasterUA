@@ -46,6 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866b9e2d04a86324495679a1e8a6aac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    npcName: 
+    level: 0
+    jobLevel: 0
+    npcJob: 0
+    strength: 0
+    dexterity: 0
+    intelligence: 0
+    sight: 0
+    cost: 0
+    maxHealthPoints: 0
+    currentHealthPoints: 0
+    sickLevel: 0
+    bSick: 0
+    loyalty: 0
+    jobClass: {fileID: 0}
   healthBarSlider: {fileID: 5501769226757428923}
 --- !u!95 &60826490704192902
 Animator:
@@ -500,7 +516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5888505
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalPosition.y
@@ -512,19 +528,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.50437766
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8634832
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_RootOrder
@@ -536,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -60.58
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
