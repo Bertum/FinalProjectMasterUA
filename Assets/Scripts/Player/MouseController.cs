@@ -37,6 +37,7 @@ public class MouseController : MonoBehaviour
                     pDataController.Save();
                     //Load new Scene with Parameters
                     confirmationScreen.ActivateCanvas(SceneNames.BATTLE_SCENE, languageController.GetTextById("confirmation.battleLevel") + " " + pDataController.PlayerData.EventDifficulty);
+                    pDataController.RemoveEventAt(hit.transform.gameObject.transform.position, hit.transform.gameObject.transform.rotation);
                 }
                 if (hit.transform.gameObject.tag.Contains("WreckageEvent"))
                 {
@@ -45,6 +46,7 @@ public class MouseController : MonoBehaviour
                     pDataController.Save();
                     //Load new Scene with Parameters
                     confirmationScreen.ActivateCanvas(SceneNames.SINK_SCENE, languageController.GetTextById("confirmation.sinkLevel") + " " + pDataController.PlayerData.EventDifficulty);
+                    pDataController.RemoveEventAt(hit.transform.gameObject.transform.position, hit.transform.gameObject.transform.rotation);
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerDataController : MonoBehaviour
 {
@@ -33,5 +34,14 @@ public class PlayerDataController : MonoBehaviour
             PlayerData.Rotation = player.transform.rotation;
         }
         saveLoadService.Save(PlayerData);
+    }
+
+    internal void RemoveEventAt(Vector3 position, Quaternion rotation) {
+        for(int i = 0; i < PlayerData.MapData.Count; i++) {
+            if(PlayerData.MapData[i].Position == position && PlayerData.MapData[i].Rotation == rotation) {
+                PlayerData.MapData.Remove(PlayerData.MapData[i]);
+                saveLoadService.Save(PlayerData);
+            }
+        }
     }
 }

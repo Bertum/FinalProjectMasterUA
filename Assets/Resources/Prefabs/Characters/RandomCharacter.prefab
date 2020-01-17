@@ -362,7 +362,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5501769226757428921}
-  m_LocalRotation: {x: -0, y: -0.5087546, z: -0, w: 0.8609116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -2.1800003}
   m_LocalScale: {x: 0.023698814, y: 0.046262458, z: 0.023698814}
   m_Children:
@@ -371,7 +371,7 @@ RectTransform:
   - {fileID: 5501769225979100687}
   m_Father: {fileID: 5501769225964282826}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -61.162003, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.55, y: 2.04}
@@ -510,10 +510,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5501769225849737583}
     m_Modifications:
-    - target: {fileID: 178864, guid: e2f10831105642449ad2b66edee77568, type: 3}
-      propertyPath: m_Name
-      value: Character_Pirate_Deckhand_02
-      objectReference: {fileID: 0}
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -569,6 +565,10 @@ PrefabInstance:
     - target: {fileID: 457374, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_LocalScale.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 178864, guid: e2f10831105642449ad2b66edee77568, type: 3}
+      propertyPath: m_Name
+      value: Character_Pirate_Deckhand_02
       objectReference: {fileID: 0}
     - target: {fileID: 185830, guid: e2f10831105642449ad2b66edee77568, type: 3}
       propertyPath: m_IsActive
